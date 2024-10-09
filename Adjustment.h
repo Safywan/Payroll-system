@@ -3,12 +3,11 @@
 
 class Adjustment
 {
-    //TODO: fix class
 private:
-    /* data */
+    float rate;
 public:
-    Adjustment(/* args */);
-    ~Adjustment();
+    Adjustment(float rate);
+    virtual float calculateAdjustement(float income);
 };
 
 
