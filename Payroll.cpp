@@ -5,12 +5,20 @@
 
 using namespace std;
 
-void 
+// Constructor
+Payroll::Payroll(double companyFund) { this->companyFund = companyFund; }
+
+void Payroll::processPayRoll() {
+  if (companyFund < totalPayRollCost) {
+    cout << "Insufficient fund!. Please try again!" << endl;
+  }
+  cout << "The fund is loading";
+}
 
 float Payroll::calculateTotalCost() {
   // Go through the employees and calculate their total cost
   for (int i = 0; i < employees.size(); i++) {
-    totalPayRollCost = totalPayRollCost; // Add the employee payrate ????
+    totalPayRollCost = totalPayRollCost;  // Add the employee payrate ????
   }
 }
 // Add employees
@@ -44,6 +52,4 @@ double Payroll::getCompanyFund() {
   // Return the balance of company fund
   return companyFund;
 }
-double Payroll::getTotalCost() {
-    return totalPayRollCost;
-}
+double Payroll::getTotalCost() { return totalPayRollCost; }
