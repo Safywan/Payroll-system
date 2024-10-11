@@ -1,24 +1,29 @@
 #include "Payroll.h"
 
 #include <algorithm>
+#include <chrono>
 #include <iostream>
 
 using namespace std;
 
-// Constructor
+// Constructor that initialises company fund
 Payroll::Payroll(double companyFund) { this->companyFund = companyFund; }
 
 void Payroll::processPayRoll() {
   if (companyFund < totalPayRollCost) {
     cout << "Insufficient fund!. Please try again!" << endl;
   }
-  cout << "The fund is loading";
-}
+  cout << "The fund is processed! Thank you!" << endl;
 
+  cout << "Your fund is currently: " << companyFund << endl;
+}
+// Calculates the total money needed from the company fund
 float Payroll::calculateTotalCost() {
   // Go through the employees and calculate their total cost
   for (int i = 0; i < employees.size(); i++) {
-    totalPayRollCost = totalPayRollCost;  // Add the employee payrate ????
+    totalPayRollCost =
+        totalPayRollCost +
+        employees[i].calculateTotalPayment();  // Add the employee payrate ????
   }
 }
 // Add employees
@@ -43,6 +48,15 @@ void Payroll::removeEmployee(Employee employee) {
   // Remove the employee from the array
   employees.erase(employees.begin() + index);
 }
+
+// Add payslip to the payslip array
+void Payroll::addPaySlip(PaySlip payslip) {
+  payslips.push_back(payslip);
+}
+
+// Generate payslips of different employees
+
+
 // Getter functions defined
 
 // Get number of employees

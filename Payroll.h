@@ -25,8 +25,10 @@ class Payroll {
                                // superannuation)
   void addEmployee(Employee employee);  // Add employee to the payroll system
   void removeEmployee(
-      Employee employee);   // Remove employee to the payroll system
-  void generatePaySlips();  // Generates payslips for employees
+      Employee employee);  // Remove employee to the payroll system
+
+  void addPaySlip(PaySlip payslip);
+  void generatePaySlip();  // Generates payslips for employees
 
   // Getter functions for data members
   double getTaxRate();
