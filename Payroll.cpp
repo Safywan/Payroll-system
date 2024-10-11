@@ -5,6 +5,14 @@
 
 using namespace std;
 
+void 
+
+float Payroll::calculateTotalCost() {
+  // Go through the employees and calculate their total cost
+  for (int i = 0; i < employees.size(); i++) {
+    totalPayRollCost = totalPayRollCost; // Add the employee payrate ????
+  }
+}
 // Add employees
 void Payroll::addEmployee(Employee employee) {
   // Add employees to the array in the payroll system
