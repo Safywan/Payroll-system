@@ -17,6 +17,8 @@ class Payroll {
   vector<Employee> employees;
 
  public:
+  // Constructor
+  Payroll(double companyFund);
   // Process payroll
   void processPayRoll();       // Process the payroll for all employees
   float calculateTotalCost();  // Calculates the total cost (including tax and
