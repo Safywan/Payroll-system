@@ -28,15 +28,12 @@ void Payroll::addEmployee(Employee employee) {
 }
 
 // Remove employees
-void Payroll::removeEmployee(Employee employee) {
-  // We need to make the employee ID as the index number row in the array
-  int target = employee.getEmployeeID();
-
+void Payroll::removeEmployee(int employeeID) {
   int index;  // Store the position of the employee in the vector
 
   // Search through the array to find the index
   for (int i = 0; i < employees.size(); i++) {
-    if (target == employees[i].getEmployeeID()) {
+    if (employeeID == employees[i].getEmployeeID()) {
       index = i;
     }
   }

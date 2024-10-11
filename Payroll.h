@@ -25,7 +25,7 @@ class Payroll {
                                // superannuation)
   void addEmployee(Employee employee);  // Add employee to the payroll system
   void removeEmployee(
-      Employee employee);   // Remove employee to the payroll system
+      int employeeID);   // Remove employee to the payroll system
   void generatePaySlips();  // Generates payslips for employees
 
   // Getter functions for data members
