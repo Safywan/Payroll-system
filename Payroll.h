@@ -35,6 +35,7 @@ public:
   double getTotalCost();
   double getCompanyFund();
   int getNumberOfEmployees();
+  vector<Employee> getEmployees();
 };
 
 #endif

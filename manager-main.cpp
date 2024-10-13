@@ -70,6 +70,19 @@ void addNewEmployee(Payroll payroll)
     payroll.addEmployee(newEmployee);
 }
 
+void viewEmployeeDetails(Payroll payroll){
+    cout << "The current number of employees in the Payroll is: " << payroll.getNumberOfEmployees() << endl;
+
+    vector<Employee> employees = payroll.getEmployees();
+
+    cout << "|ID\t|\tName\t|\tPosition\t|" << endl;
+    for (Employee employee : employees)
+    {
+        cout << "|" << employee.getEmployeeID() << "\t|" << employee.getName() << "\t|" << employee.getPosition() <<"|" << endl;
+    }
+    
+}
+
 int main()
 {
     // Ask how much is in the company account
@@ -92,7 +105,7 @@ int main()
         cout << "4. Output total company cost" << endl;
         cout << "5. Process Payroll and pay outstanding balance" << endl;
         cout << "6. Generate Payslips for all Employees" << endl;
-        cout << "7. View Employee details" << endl;
+        cout << "7. View Number of Employees" << endl;
         cout << "Enter your response: " << endl;
 
         cin >> response;
@@ -111,7 +124,7 @@ int main()
         case 4: // Output total company cost
             cout << "The total cost is: " << payroll.getTotalCost() << endl;
             break;
-        case 5: // Process Payroll 
+        case 5: // Process Payroll
             if (payroll.processPayRoll())
             {
                 cout << "The fund is processed! Thank you!" << endl;
@@ -126,7 +139,10 @@ int main()
             cout << "Generating Payslips for all Employees." << endl;
             payroll.generatePaySlips();
             break;
-        case 7: // View Employee details
+        case 7: // View number of employees
+            viewEmployeeDetails(payroll);
+            break;
+        case 8: // View Employee details
             // TODO: Implement getEmployee(employeeID) function and put it here
             break;
         default:

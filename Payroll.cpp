@@ -78,3 +78,4 @@ int Payroll::getNumberOfEmployees() { return employees.size(); }
 double Payroll::getTaxRate() { return taxRate; }
 double Payroll::getCompanyFund() { return companyFund; }
 double Payroll::getTotalCost() { return totalPayRollCost; }
+vector<Employee> Payroll::getEmployees() { return employees; }

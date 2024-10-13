@@ -20,6 +20,11 @@ int Employee::getHoursWorked() const
     return hoursWorked;
 }
 
+std::string Employee::getPosition()
+{
+    return position;
+}
+
 // Setter for hoursWorked
 void Employee::setHoursWorked(int hours)
 {

@@ -28,6 +28,8 @@ public:
     // Getter for hoursWorked
     int getHoursWorked() const;
 
+    std::string getPosition();
+
     // Method to calculate total payment based on work type and pay rate
     float calculateTotalPayment() const;
 
