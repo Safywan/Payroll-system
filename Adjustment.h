@@ -1,9 +1,10 @@
 #ifndef ADJUSTMENT_H
 #define ADJUSTMENT_H
 
+//Adjustement is an abstract and fully virtual class that Superannuition and Taxes Inherit from
 class Adjustment
 {
-protected:  // Changed this from private to protected
+protected:  
     float rate;
 
 public:

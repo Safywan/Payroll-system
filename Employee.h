@@ -21,7 +21,7 @@ private:
 
 public:
     Employee(const std::string &name, int employeeID, int age, bool isActive, std::string position, WorkType workType, float payRate, int hoursWorked = 0);
-    
+
     // Getter for payRate
     float getPayRate() const;
 
@@ -30,7 +30,7 @@ public:
 
     // Method to calculate total payment based on work type and pay rate
     float calculateTotalPayment() const;
-    
+
     // Method to set hours worked
     void setHoursWorked(int hours);
 };

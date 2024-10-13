@@ -6,26 +6,27 @@
 #include "Employee.h"
 #include "PaySlip.h"
 
-class Payroll {
- private:
-  double taxRate;           // Tax rate
-  double totalPayRollCost;  // Cost of total wages
-  double companyFund;       // Salaries are paid from the company fund
+class Payroll
+{
+private:
+  double taxRate;          // Tax rate
+  double totalPayRollCost; // Cost of total wages
+  double companyFund;      // Salaries are paid from the company fund
   // Array of payslips
   vector<PaySlip> payslips;
   // Number of employees in the company
   vector<Employee> employees;
 
- public:
+public:
   // Constructor
   Payroll(double companyFund);
   // Process payroll
-  void processPayRoll();       // Process the payroll for all employees
-  void calculateTotalCost();  // Calculates the total cost (including tax and
-                               // superannuation)
-  void addEmployee(Employee employee);  // Add employee to the payroll system
-  void removeEmployee(int employeeID);   // Remove employee to the payroll system
-  void generatePaySlips();  // Generates payslips for employees
+  void processPayRoll();               // Process the payroll for all employees
+  void calculateTotalCost();           // Calculates the total cost (including tax and
+                                       // superannuation)
+  void addEmployee(Employee employee); // Add employee to the payroll system
+  void removeEmployee(int employeeID); // Remove employee to the payroll system
+  void generatePaySlips();             // Generates payslips for employees
   // Remove employee to the payroll system
 
   void addPaySlip(PaySlip payslip);

@@ -8,7 +8,6 @@
 
 using namespace std;
 
-
 void removeEmployee(Payroll payroll)
 {
     // Remove Employee from payroll by prompting user for employeeID

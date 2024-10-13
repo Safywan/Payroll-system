@@ -64,7 +64,8 @@ void Payroll::addPaySlip(PaySlip payslip)
 // Generate payslips of different employees
 void Payroll::generatePaySlips()
 {
-  for(PaySlip payslip : payslips){ //Iterates over all Payslips in the "payslip" vector and stores in variable payslip
+  for (PaySlip payslip : payslips)
+  { // Iterates over all Payslips in the "payslip" vector and stores in variable payslip
     payslip.generateSlip();
   }
 }

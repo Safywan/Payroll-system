@@ -3,7 +3,9 @@
 
 #include <string>
 
-class User {
+// User is an abstrct class from which Employees will Inherit
+class User
+{
 protected:
     std::string name;
     int employeeID;
@@ -11,8 +13,8 @@ protected:
     bool isActive;
 
 public:
-    User(const std::string& name, int employeeID, int age, bool isActive);
-    
+    User(const std::string &name, int employeeID, int age, bool isActive);
+
     std::string getName() const;
     int getEmployeeID() const;
     int getAge() const;
