@@ -93,7 +93,7 @@ int main()
         switch (response)
         {
         case 1: // Exit
-            cout << "Exiting program...";
+            cout << "Exiting program..." << endl;
             break;
         case 2: // Add a New Employee
             addNewEmployee(payroll);
@@ -102,7 +102,7 @@ int main()
             removeEmployee(payroll);
             break;
         case 4: // Output total company cost
-            cout << "The total cost is: " << payroll.calculateTotalCost() << endl;
+            cout << "The total cost is: " << payroll.getTotalCost() << endl;
             break;
         case 5: // Generate payslips
             cout << "Generating Payslips for all Employees." << endl;

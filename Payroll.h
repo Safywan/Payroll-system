@@ -21,7 +21,7 @@ class Payroll {
   Payroll(double companyFund);
   // Process payroll
   void processPayRoll();       // Process the payroll for all employees
-  float calculateTotalCost();  // Calculates the total cost (including tax and
+  void calculateTotalCost();  // Calculates the total cost (including tax and
                                // superannuation)
   void addEmployee(Employee employee);  // Add employee to the payroll system
   void removeEmployee(int employeeID);   // Remove employee to the payroll system
@@ -29,8 +29,6 @@ class Payroll {
   // Remove employee to the payroll system
 
   void addPaySlip(PaySlip payslip);
-  void generatePaySlip();  // Generates payslips for employees
-
   // Getter functions for data members
   double getTaxRate();
   double getTotalCost();

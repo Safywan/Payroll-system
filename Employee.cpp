@@ -3,8 +3,8 @@
 // Constructor initialization
 Employee::Employee(const std::string &name, int employeeID, int age, bool isActive,
                    std::string position, WorkType workType, float payRate, int hoursWorked)
-    : position(position), workType(workType), payRate(payRate), hoursWorked(hoursWorked),
-      User(name, employeeID, age, isActive)
+    : User(name, employeeID, age, isActive),
+    position(position), workType(workType), payRate(payRate), hoursWorked(hoursWorked)
 {
 }
 
