@@ -63,6 +63,21 @@ void Payroll::addPaySlip(PaySlip payslip)
   payslips.push_back(payslip);
 }
 
+// Returns employee details as a list of strings of the form id|name|position|age
+std::string *Payroll::getEmployeeDetails()
+{
+  std::string *details = new std::string[employees.size()];
+  for (int i = 0; i < (int)employees.size(); i++)
+  {
+    Employee employee = employees[i];
+    details[i] = to_string(employee.getEmployeeID()) + " | " +
+                 employee.getName() + " | " +
+                 employee.getPosition() + " | " +
+                 to_string(employee.getAge());
+  }
+  return details;
+}
+
 // Generate payslips of all employees and add to outstanding cost
 void Payroll::generatePaySlips()
 {

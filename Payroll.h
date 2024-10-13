@@ -30,6 +30,8 @@ public:
   // Remove employee to the payroll system
 
   void addPaySlip(PaySlip payslip);
+  std::string* getEmployeeDetails();
+
   // Getter functions for data members
   double getTaxRate();
   double getTotalCost();

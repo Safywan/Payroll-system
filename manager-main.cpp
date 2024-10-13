@@ -70,17 +70,23 @@ void addNewEmployee(Payroll payroll)
     payroll.addEmployee(newEmployee);
 }
 
-void viewEmployeeDetails(Payroll payroll){
-    cout << "The current number of employees in the Payroll is: " << payroll.getNumberOfEmployees() << endl;
+void viewEmployeeDetails(Payroll payroll)
+{
+    int number_employees = payroll.getNumberOfEmployees();
+    cout << "The current number of employees in the Payroll is: " << number_employees << endl;
 
-    vector<Employee> employees = payroll.getEmployees();
-
-    cout << "|ID\t|\tName\t|\tPosition\t|" << endl;
-    for (Employee employee : employees)
+    if (number_employees > 0)
     {
-        cout << "|" << employee.getEmployeeID() << "\t|" << employee.getName() << "\t|" << employee.getPosition() <<"|" << endl;
+        std::string *details = payroll.getEmployeeDetails();
+
+        cout << "id|name|position|age" << endl;
+        for (int i = 0; i < number_employees; i++)
+        {
+            cout << details[i] << endl;
+        }
+        
+        delete[] details;
     }
-    
 }
 
 int main()
@@ -105,11 +111,11 @@ int main()
         cout << "4. Output total company cost" << endl;
         cout << "5. Process Payroll and pay outstanding balance" << endl;
         cout << "6. Generate Payslips for all Employees" << endl;
-        cout << "7. View Number of Employees" << endl;
-        cout << "Enter your response: " << endl;
+        cout << "7. View Details of all Employees" << endl;
+        cout << "Enter your response: ";
 
         cin >> response;
-
+        cout << endl;
         switch (response)
         {
         case 1: // Exit
@@ -148,6 +154,7 @@ int main()
         default:
             cout << "Invalid number";
         }
+        cout << "\n\n";
     } while (response != 1);
 
     return 0;
