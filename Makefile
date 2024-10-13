@@ -5,7 +5,7 @@ h_files := Payroll.h PaySlip.h Adjustment.h SuperAnnuation.h Taxes.h Employee.h 
 # The testing .cpp files and .h files
 
 manager.out : manager-main.cpp $(cpp_files) $(h_files)
-	g++ -Wall -o manager.out manager-main.cpp $(cpp_files)
+	g++ -Wall -o manager.out manager-main.cpp $(cpp_files) -std=c++11
 
 clean : 
 	rm *.out
