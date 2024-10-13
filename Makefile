@@ -3,3 +3,6 @@ h_files := Payroll.h PaySlip.h Adjustment.h SuperAnnuation.h Taxes.h Employee.h 
 
 manager.out : manager-main.cpp $(cpp_files) $(h_files)
 	g++ -Wall -o manager.out manager-main.cpp $(cpp_files)
+
+clean : 
+	rm *.out
