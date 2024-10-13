@@ -21,11 +21,11 @@ public:
   // Constructor
   Payroll(double companyFund);
   // Process payroll
-  void processPayRoll();               // Process the payroll for all employees
+  bool processPayRoll();               // Process the payroll for all employees
   void calculateTotalCost();           // Calculates the total cost (including tax and
                                        // superannuation)
   void addEmployee(Employee employee); // Add employee to the payroll system
-  void removeEmployee(int employeeID); // Remove employee to the payroll system
+  bool removeEmployee(int employeeID); // Remove employee to the payroll system
   void generatePaySlips();             // Generates payslips for employees
   // Remove employee to the payroll system
 

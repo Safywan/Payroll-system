@@ -14,7 +14,14 @@ void removeEmployee(Payroll payroll)
     int id;
     cout << "Enter the ID of the Employee you are trying to remove: ";
     cin >> id;
-    payroll.removeEmployee(id);
+    if (payroll.removeEmployee(id))
+    {
+        cout << "Employee removed successfully" << endl;
+    }
+    else
+    {
+        cout << "Invalid Employee ID. Try again" << endl;
+    }
 }
 
 void addNewEmployee(Payroll payroll)
@@ -83,8 +90,9 @@ int main()
         cout << "2. Add a new Employee" << endl;
         cout << "3. Remove an Employee" << endl;
         cout << "4. Output total company cost" << endl;
-        cout << "5. Generate Payslips for all Employees" << endl;
-        cout << "6. View Employee details" << endl;
+        cout << "5. Process Payroll and pay outstanding balance" << endl;
+        cout << "6. Generate Payslips for all Employees" << endl;
+        cout << "7. View Employee details" << endl;
         cout << "Enter your response: " << endl;
 
         cin >> response;
@@ -103,11 +111,22 @@ int main()
         case 4: // Output total company cost
             cout << "The total cost is: " << payroll.getTotalCost() << endl;
             break;
-        case 5: // Generate payslips
+        case 5: // Process Payroll 
+            if (payroll.processPayRoll())
+            {
+                cout << "The fund is processed! Thank you!" << endl;
+            }
+            else
+            {
+                cout << "Insufficient fund!. Please try again!" << endl;
+            }
+            cout << "Your fund is currently: " << payroll.getCompanyFund() << endl;
+            break;
+        case 6: // Generate payslips
             cout << "Generating Payslips for all Employees." << endl;
             payroll.generatePaySlips();
             break;
-        case 6: // View Employee details
+        case 7: // View Employee details
             // TODO: Implement getEmployee(employeeID) function and put it here
             break;
         default:
