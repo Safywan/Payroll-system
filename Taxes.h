@@ -6,7 +6,7 @@
 class Taxes : public Adjustment {
 public:
     Taxes(float rate);
-    virtual float calculateAdjustement(float income) override;  // Override to calculate tax based on income
+    float calculateAdjustement(float income);  // Override to calculate tax based on income
 };
 
 #endif

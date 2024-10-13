@@ -11,7 +11,7 @@ private:
 public:
     SuperAnnuation(float rate, const std::string &provider);
 
-    virtual float calculateAdjustement(float income) override;   // Calculate superannuation adjustment
+    float calculateAdjustement(float income) ;   // Calculate superannuation adjustment
     float calculateCompanyContribution(float income);  // Company’s contribution based on income
     std::string getProvider() const;
 };
