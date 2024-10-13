@@ -25,7 +25,7 @@ void Payroll::calculateTotalCost()
   totalPayRollCost = 0;
 
   // Go through the employees and calculate their total cost using an iterator to iterate over the vector
-  for (vector<Employee>::iterator it = employees.begin(); it != employees.end(); ++it)
+  for (auto it = employees.begin(); it != employees.end(); ++it)
   {
     totalPayRollCost += it->calculateTotalPayment();
   }
@@ -42,7 +42,7 @@ void Payroll::addEmployee(Employee employee)
 bool Payroll::removeEmployee(int employeeID)
 {
   // Search through the array to find the index using an iterator to iterate over the vector
-  for (vector<Employee>::iterator it = employees.begin(); it != employees.end();)
+  for (auto it = employees.begin(); it != employees.end();)
   {
     if (employeeID == it->getEmployeeID())
     {
