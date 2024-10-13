@@ -3,7 +3,7 @@
 SuperAnnuation::SuperAnnuation(float rate, const std::string &provider)
     : Adjustment(rate), provider(provider) {}
 
-float SuperAnnuation::calculateAdjustement(float income)
+float SuperAnnuation::calculateAdjustment(float income)
 {
     // Example calculation: Superannuation contribution as a percentage of income
     return income * rate;

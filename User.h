@@ -3,7 +3,7 @@
 
 #include <string>
 
-// User is an abstrct class from which Employees will Inherit
+// User is an abstract class from which Employees will Inherit
 class User
 {
 protected:

@@ -10,12 +10,12 @@ PaySlip::PaySlip() : PaySlip(0, 0) {}
 
 PaySlip::PaySlip(int employeeID, int grossPay) : employeeID(employeeID), grossPay(grossPay) {}
 
-void PaySlip::addAdjustment(Adjustment adjustemnet)
+void PaySlip::addAdjustment(Adjustment adjustment)
 {
-  adjustments.push_back(adjustemnet);
+  adjustments.push_back(adjustment);
 }
 
-void PaySlip::removelastAdjustment() { adjustments.pop_back(); }
+void PaySlip::removeLastAdjustment() { adjustments.pop_back(); }
 
 float PaySlip::getGrossPay() { return grossPay; }
 
@@ -28,7 +28,7 @@ void PaySlip::setNetPay(float netPay) { this->netPay = netPay; }
 void PaySlip::generateSlip()
 {
   std::string filename = to_string(employeeID) + ".txt";
-  // TODO: Finalise file format
+  // TODO: Finalize file format
   ofstream outfile(filename);
   outfile << "Employee ID: " << employeeID << endl;
   outfile << "Gross Pay: " << grossPay << endl;

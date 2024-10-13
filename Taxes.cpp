@@ -2,7 +2,7 @@
 
 Taxes::Taxes(float rate) : Adjustment(rate) {}
 
-float Taxes::calculateAdjustement(float income)
+float Taxes::calculateAdjustment(float income)
 {
     // Example calculation: Flat tax rate
     // You can modify this to include tax brackets or other logic

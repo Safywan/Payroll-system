@@ -4,7 +4,7 @@
 User::User(const std::string &name, int employeeID, int age, bool isActive)
     : name(name), employeeID(employeeID), age(age), isActive(isActive) {}
 
-// Getters and seters for user
+// Getters and setters for user
 std::string User::getName() const
 {
     return name;

@@ -28,9 +28,9 @@ void addNewEmployee(Payroll payroll)
 {
     // Create new Employee by prompting user for the details and add it to the payroll
     std::string name, position;
-    int employeeID, age, worktypeint;
-    WorkType worktype;
-    double payrate;
+    int employeeID, age, work_type_int;
+    WorkType work_type;
+    double pay_rate;
 
     // prompting the user for all the details
     cout << "Enter the Name: ";
@@ -42,23 +42,23 @@ void addNewEmployee(Payroll payroll)
     cout << "Enter the Employee's position: ";
     cin >> position;
     cout << "Enter the Pay Rate (per hour): ";
-    cin >> payrate;
+    cin >> pay_rate;
 
     cout << "Enter if the Employee works Full Time(1), PartTime(2), Casual(3) or Contact(4)";
-    cin >> worktypeint;
-    switch (worktypeint)
+    cin >> work_type_int;
+    switch (work_type_int)
     {
     case 1:
-        worktype = FullTime;
+        work_type = FullTime;
         break;
     case 2:
-        worktype = PartTime;
+        work_type = PartTime;
         break;
     case 3:
-        worktype = Casual;
+        work_type = Casual;
         break;
     case 4:
-        worktype = Contract;
+        work_type = Contract;
         break;
 
     default:
@@ -66,7 +66,7 @@ void addNewEmployee(Payroll payroll)
     }
 
     // Add new employee to payroll
-    Employee newEmployee = Employee(name, employeeID, age, true, position, worktype, payrate);
+    Employee newEmployee = Employee(name, employeeID, age, true, position, work_type, pay_rate);
     payroll.addEmployee(newEmployee);
 }
 
@@ -84,7 +84,7 @@ void viewEmployeeDetails(Payroll payroll)
         {
             cout << details[i] << endl;
         }
-        
+
         delete[] details;
     }
 }
@@ -97,7 +97,7 @@ int main()
     cout << "How much is in the company account: " << endl;
     cin >> initCompanyAmount;
 
-    // Initalise Payroll
+    // Initialise Payroll
     Payroll payroll = Payroll(initCompanyAmount);
     int response;
 

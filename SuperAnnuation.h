@@ -12,7 +12,7 @@ private:
 public:
     SuperAnnuation(float rate, const std::string &provider);
 
-    float calculateAdjustement(float income);         // Calculate superannuation adjustment
+    float calculateAdjustment(float income);         // Calculate superannuation adjustment
     float calculateCompanyContribution(float income); // Company’s contribution based on income
     std::string getProvider() const;
 };

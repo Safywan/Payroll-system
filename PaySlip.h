@@ -19,8 +19,8 @@ public:
     PaySlip();
     PaySlip(int employeeID, int grossPay);
 
-    void addAdjustment(Adjustment adjustemnet);
-    void removelastAdjustment();
+    void addAdjustment(Adjustment adjustment);
+    void removeLastAdjustment();
 
     float getGrossPay();
     float getNetPay();

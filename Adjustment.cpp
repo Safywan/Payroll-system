@@ -4,7 +4,7 @@ Adjustment::Adjustment(float rate) : rate(rate)
 {
 }
 
-float Adjustment::calculateAdjustement(float income)
+float Adjustment::calculateAdjustment(float income)
 {
     return 0.0f;
 }

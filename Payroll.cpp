@@ -5,7 +5,7 @@ using namespace std;
 // Constructor that initialises company fund
 Payroll::Payroll(double companyFund) { this->companyFund = companyFund; }
 
-// Pays the outstanding PayRollCost and returns true if funds are sufficent. Returns false if not
+// Pays the outstanding PayRollCost and returns true if funds are sufficient. Returns false if not
 bool Payroll::processPayRoll()
 {
   if (companyFund < totalPayRollCost)
