@@ -28,7 +28,7 @@ public:
     void setGrossPay(float grossPay);
     void setNetPay(float grossPay);
 
-    void generateSlip(string filename);
+    void generateSlip();
 };
 
 #endif

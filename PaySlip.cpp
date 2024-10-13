@@ -25,8 +25,9 @@ void PaySlip::setGrossPay(float grossPay) { this->grossPay = grossPay; }
 
 void PaySlip::setNetPay(float netPay) { this->netPay = netPay; }
 
-void PaySlip::generateSlip(string filename)
+void PaySlip::generateSlip()
 {
+  std::string filename = to_string(employeeID) + ".txt";
   // TODO: Finalise file format
   ofstream outfile(filename);
   outfile << "Employee ID: " << employeeID << endl;

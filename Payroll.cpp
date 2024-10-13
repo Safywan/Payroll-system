@@ -22,7 +22,6 @@ void Payroll::processPayRoll()
 // Calculates the total money needed from the company fund
 void Payroll::calculateTotalCost()
 {
-
   // Reset the cost to 0
   totalPayRollCost = 0;
 
@@ -65,7 +64,9 @@ void Payroll::addPaySlip(PaySlip payslip)
 // Generate payslips of different employees
 void Payroll::generatePaySlips()
 {
-  // TODO: Implement function
+  for(PaySlip payslip : payslips){ //Iterates over all Payslips in the "payslip" vector and stores in variable payslip
+    payslip.generateSlip();
+  }
 }
 
 // Getter functions defined
