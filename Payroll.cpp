@@ -2,6 +2,8 @@
 
 using namespace std;
 
+Payroll::Payroll() : Payroll(0) {}
+
 // Constructor that initialises company fund
 Payroll::Payroll(double companyFund) { this->companyFund = companyFund; }
 

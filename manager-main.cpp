@@ -92,7 +92,7 @@ void saveData(Payroll payroll)
     else
     {
         // First line is the company account
-        employee_file << payroll.getCompanyFund();
+        employee_file << payroll.getCompanyFund() << endl;
 
         // The second line should be the number of Employees
         int number_employees = payroll.getNumberOfEmployees();
@@ -137,9 +137,9 @@ void loadData(Payroll *payroll_ptr)
         int num_employees;
         employee_file >> num_employees;
 
-        int id, age, hours_worked;
+        int id, age, hours_worked, buffer;
         float pay_rate;
-        string name, position, buffer;
+        string name, position;
         bool is_active;
         WorkType work_type;
         // Create each employee
@@ -154,29 +154,7 @@ void loadData(Payroll *payroll_ptr)
             employee_file >> pay_rate;
             employee_file >> hours_worked;
 
-            // Map work_type correctly
-            if (buffer == "FullTime")
-            {
-                work_type = FullTime;
-            }
-            else if (buffer == "PartTime")
-            {
-                work_type = PartTime;
-            }
-            else if (buffer == "Casual")
-            {
-                work_type = Casual;
-            }
-            else if (buffer == "Contract")
-            {
-                work_type = Contract;
-            }
-            else
-            {
-#ifdef DEBUG
-                throw("Error Mapping work_type from buffer");
-#endif
-            }
+            work_type = static_cast<WorkType>(buffer);
 
             // Create the Employee
             payroll_ptr->addEmployee(Employee(name, id, age, is_active, position, work_type, pay_rate, hours_worked));
@@ -196,7 +174,7 @@ void loadData(Payroll *payroll_ptr)
     }
 }
 
-int main()
+void initialisePayroll(Payroll *payroll_ptr)
 {
     // Ask how much is in the company account
     double initCompanyAmount;
@@ -205,7 +183,44 @@ int main()
     cin >> initCompanyAmount;
 
     // Initialise Payroll
-    Payroll payroll = Payroll(initCompanyAmount);
+    *payroll_ptr = Payroll(initCompanyAmount);
+}
+
+int main()
+{
+    // Check if save files exist
+    ifstream employeeFile("employees.txt");
+
+    Payroll payroll;
+    // if it exists, allow the user to load data
+    if (employeeFile.is_open())
+    {
+        employeeFile.close();
+        char response;
+        cout << "Save file detected. Do you want to load from the saved data? (y/n): ";
+        cin >> response;
+        do
+        {
+            switch (response)
+            {
+            case 'y':
+                loadData(&payroll);
+                break;
+            case 'n':
+                initialisePayroll(&payroll);
+                break;
+            default:
+                cout << "Invalid option";
+                break;
+            }
+        } while (response != 'y' and response != 'n');
+    }
+    else
+    {
+        cout << "No save file detected. Initialising new payroll" << endl;
+        initialisePayroll(&payroll);
+    }
+
     int response;
 
     do // Iterate over all the options until the user exits the program

@@ -19,6 +19,7 @@ private:
 
 public:
   // Constructor
+  Payroll();
   Payroll(double companyFund);
   // Process payroll
   bool processPayRoll();               // Process the payroll for all employees
@@ -30,7 +31,7 @@ public:
   // Remove employee to the payroll system
 
   void addPaySlip(PaySlip payslip);
-  std::string* getEmployeeDetails();
+  std::string *getEmployeeDetails();
 
   // Getter functions for data members
   double getTaxRate();
