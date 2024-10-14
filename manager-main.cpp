@@ -5,6 +5,9 @@
 #include "Taxes.h"
 
 #include <iostream>
+#include <fstream>
+
+#define DEBUG
 
 using namespace std;
 
@@ -89,6 +92,121 @@ void viewEmployeeDetails(Payroll payroll)
     }
 }
 
+/*
+Saves The data in the following format: The first line will be the company account, followed by the number of employees.
+Then, it will be ID, Name, Position, Age, isActive, work_type, pay_rate,  and hours_worked all in separate lines*/
+void saveData(Payroll payroll)
+{
+    ofstream employee_file;
+    employee_file.open("employees.txt");
+    if (!employee_file.is_open())
+    {
+        cout << "Error while opening file. Please Try again" << endl;
+    }
+    else
+    {
+        //First line is the company account
+        employee_file << payroll.getCompanyFund();
+
+        // The second line should be the number of Employees
+        int number_employees = payroll.getNumberOfEmployees();
+        employee_file << number_employees << endl;
+
+        // Iterate over all the employees
+        vector<Employee> employees = payroll.getEmployees();
+        for (Employee employee : employees)
+        {
+            employee_file << employee.getEmployeeID() << endl;
+            employee_file << employee.getName() << endl;
+            employee_file << employee.getPosition() << endl;
+            employee_file << employee.getAge() << endl;
+            employee_file << employee.getIsActive() << endl;
+            employee_file << employee.getWorkType() << endl;
+            employee_file << employee.getPayRate() << endl;
+            employee_file << employee.getHoursWorked() << endl;
+        }
+
+        employee_file.close();
+        cout << "Successfully saved data" << endl;
+    }
+}
+
+void loadData(Payroll *payroll_ptr)
+{
+    ifstream employee_file;
+    employee_file.open("employees.txt");
+    if (!employee_file.is_open())
+    {
+        // TODO: Test what happens when file does not exist
+        cout << "Error while opening file. Please Try again" << endl;
+    }
+    else
+    {
+        // Get company account and initialise payroll
+        double company_account;
+        employee_file >> company_account;
+        *payroll_ptr = Payroll(company_account);
+
+        // Get Number of Employees
+        int num_employees;
+        employee_file >> num_employees;
+
+        int id, age, hours_worked;
+        float pay_rate;
+        string name, position, buffer;
+        bool is_active;
+        WorkType work_type;
+        // Create each employee
+        for (int i = 0; i < num_employees; i++)
+        {
+            employee_file >> id;
+            employee_file >> name;
+            employee_file >> position;
+            employee_file >> age;
+            employee_file >> is_active;
+            employee_file >> buffer; // We need the buffer as work_type is a custom enum
+            employee_file >> pay_rate;
+            employee_file >> hours_worked;
+
+            // Map work_type correctly
+            if (buffer == "FullTime")
+            {
+                work_type = FullTime;
+            }
+            else if (buffer == "PartTime")
+            {
+                work_type = PartTime;
+            }
+            else if (buffer == "Casual")
+            {
+                work_type = Casual;
+            }
+            else if (buffer == "Contract")
+            {
+                work_type = Contract;
+            }
+            else
+            {
+#ifdef DEBUG
+                throw("Error Mapping work_type from buffer");
+#endif
+            }
+
+            // Create the Employee
+            payroll_ptr->addEmployee(Employee(name, id, age, is_active, position, work_type, pay_rate, hours_worked));
+        }
+        employee_file.close();
+
+        if(num_employees == payroll_ptr->getNumberOfEmployees()){
+            cout << "Successfully loaded all employees" << endl;
+        } else{
+            #ifdef DEBUG
+            __throw_logic_error("Employees not fully loaded");
+            #endif
+        }
+    }
+}
+
 int main()
 {
     // Ask how much is in the company account
@@ -112,6 +230,7 @@ int main()
         cout << "5. Process Payroll and pay outstanding balance" << endl;
         cout << "6. Generate Payslips for all Employees" << endl;
         cout << "7. View Details of all Employees" << endl;
+        cout << "8. Save data" << endl;
         cout << "Enter your response: ";
 
         cin >> response;
@@ -149,7 +268,7 @@ int main()
             viewEmployeeDetails(payroll);
             break;
         case 8: // View Employee details
-            // TODO: Implement getEmployee(employeeID) function and put it here
+            saveData(payroll);
             break;
         default:
             cout << "Invalid number";

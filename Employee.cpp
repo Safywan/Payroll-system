@@ -14,10 +14,20 @@ float Employee::getPayRate() const
     return payRate;
 }
 
+WorkType Employee::getWorkType()
+{
+    return workType;
+}
+
 // Getter for hoursWorked
 int Employee::getHoursWorked() const
 {
     return hoursWorked;
+}
+
+float Employee::getPayRate()
+{
+    return payRate;
 }
 
 std::string Employee::getPosition()

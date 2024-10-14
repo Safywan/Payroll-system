@@ -25,10 +25,13 @@ public:
     // Getter for payRate
     float getPayRate() const;
 
+    WorkType getWorkType();
+
     // Getter for hoursWorked
     int getHoursWorked() const;
 
     std::string getPosition();
+    float getPayRate();
 
     // Method to calculate total payment based on work type and pay rate
     float calculateTotalPayment() const;
