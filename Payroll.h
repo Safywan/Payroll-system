@@ -33,6 +33,8 @@ public:
   void addPaySlip(PaySlip payslip);
   std::string *getEmployeeDetails();
 
+  Employee *getEmployee(int employeeID);
+
   // Getter functions for data members
   double getTaxRate();
   double getTotalCost();

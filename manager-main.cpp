@@ -46,14 +46,13 @@ int main()
     {
         // Print options and ask user for response
         cout << "What do you want to do? (Select the number of the option you want)" << endl;
-        cout << "1. Exit" << endl;
+        cout << "1. Save and Exit" << endl;
         cout << "2. Add a new Employee" << endl;
         cout << "3. Remove an Employee" << endl;
         cout << "4. Output total company cost" << endl;
         cout << "5. Process Payroll and pay outstanding balance" << endl;
         cout << "6. Generate Payslips for all Employees" << endl;
         cout << "7. View Details of all Employees" << endl;
-        cout << "8. Save data" << endl;
         cout << "Enter your response: ";
 
         cin >> response;
@@ -61,6 +60,7 @@ int main()
         switch (response)
         {
         case 1: // Exit
+            Utilities::saveData(payroll);
             cout << "Exiting program..." << endl;
             break;
         case 2: // Add a New Employee
@@ -89,9 +89,6 @@ int main()
             break;
         case 7: // View number of employees
             Utilities::viewEmployeeDetails(payroll);
-            break;
-        case 8: // View Employee details
-            Utilities::saveData(payroll);
             break;
         default:
             cout << "Invalid number";
