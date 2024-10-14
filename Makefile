@@ -3,6 +3,8 @@ cpp_files := Utilities.cpp Payroll.cpp PaySlip.cpp Adjustment.cpp SuperAnnuation
 h_files := Utilities.h Payroll.h PaySlip.h Adjustment.h SuperAnnuation.h Taxes.h Employee.h User.h
 
 # The testing .cpp files and .h files
+testPayroll:
+	g++ -Wall -std=c++11 -o testPayroll.out testPayroll.cpp $(cpp_files)
 
 all:
 	g++ -Wall -std=c++11 -o manager.out manager-main.cpp $(cpp_files)
