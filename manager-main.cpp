@@ -11,13 +11,13 @@
 
 using namespace std;
 
-void removeEmployee(Payroll payroll)
+void removeEmployee(Payroll *payroll_ptr)
 {
     // Remove Employee from payroll by prompting user for employeeID
     int id;
     cout << "Enter the ID of the Employee you are trying to remove: ";
     cin >> id;
-    if (payroll.removeEmployee(id))
+    if (payroll_ptr->removeEmployee(id))
     {
         cout << "Employee removed successfully" << endl;
     }
@@ -27,7 +27,7 @@ void removeEmployee(Payroll payroll)
     }
 }
 
-void addNewEmployee(Payroll payroll)
+void addNewEmployee(Payroll *payroll_ptr)
 {
     // Create new Employee by prompting user for the details and add it to the payroll
     std::string name, position;
@@ -47,30 +47,15 @@ void addNewEmployee(Payroll payroll)
     cout << "Enter the Pay Rate (per hour): ";
     cin >> pay_rate;
 
-    cout << "Enter if the Employee works Full Time(1), PartTime(2), Casual(3) or Contact(4)";
+    cout << "Enter if the Employee works Full Time(0), PartTime(1), Casual(2) or Contact(3): ";
     cin >> work_type_int;
-    switch (work_type_int)
-    {
-    case 1:
-        work_type = FullTime;
-        break;
-    case 2:
-        work_type = PartTime;
-        break;
-    case 3:
-        work_type = Casual;
-        break;
-    case 4:
-        work_type = Contract;
-        break;
 
-    default:
-        break;
-    }
+    work_type = static_cast<WorkType>(work_type_int);
 
     // Add new employee to payroll
-    Employee newEmployee = Employee(name, employeeID, age, true, position, work_type, pay_rate);
-    payroll.addEmployee(newEmployee);
+    // cout << name << " " << employeeID << ' ' << age << " " << position << " " << work_type_int << " "<< work_type << " " << pay_rate << endl;
+    Employee newEmployee = Employee(name, employeeID, age, true, position, work_type, pay_rate, 0);
+    payroll_ptr->addEmployee(newEmployee);
 }
 
 void viewEmployeeDetails(Payroll payroll)
@@ -82,7 +67,8 @@ void viewEmployeeDetails(Payroll payroll)
     {
         std::string *details = payroll.getEmployeeDetails();
 
-        cout << "id|name|position|age" << endl;
+        cout << "\nid | name | position | age" << endl;
+        cout << "----------------------------" << endl;
         for (int i = 0; i < number_employees; i++)
         {
             cout << details[i] << endl;
@@ -105,7 +91,7 @@ void saveData(Payroll payroll)
     }
     else
     {
-        //First line is the company account
+        // First line is the company account
         employee_file << payroll.getCompanyFund();
 
         // The second line should be the number of Employees
@@ -197,12 +183,15 @@ void loadData(Payroll *payroll_ptr)
         }
         employee_file.close();
 
-        if(num_employees == payroll_ptr->getNumberOfEmployees()){
+        if (num_employees == payroll_ptr->getNumberOfEmployees())
+        {
             cout << "Successfully loaded all employees" << endl;
-        } else{
-            #ifdef DEBUG
+        }
+        else
+        {
+#ifdef DEBUG
             __throw_logic_error("Employees not fully loaded");
-            #endif
+#endif
         }
     }
 }
@@ -241,10 +230,10 @@ int main()
             cout << "Exiting program..." << endl;
             break;
         case 2: // Add a New Employee
-            addNewEmployee(payroll);
+            addNewEmployee(&payroll);
             break;
         case 3: // Remove an Employee
-            removeEmployee(payroll);
+            removeEmployee(&payroll);
             break;
         case 4: // Output total company cost
             cout << "The total cost is: " << payroll.getTotalCost() << endl;
