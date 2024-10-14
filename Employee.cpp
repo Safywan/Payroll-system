@@ -14,7 +14,8 @@ float Employee::getPayRate() const
     return payRate;
 }
 
-WorkType Employee::getWorkType()
+// Getter for workType
+WorkType Employee::getWorkType() const
 {
     return workType;
 }
@@ -25,12 +26,8 @@ int Employee::getHoursWorked() const
     return hoursWorked;
 }
 
-float Employee::getPayRate()
-{
-    return payRate;
-}
-
-std::string Employee::getPosition()
+// Getter for position
+std::string Employee::getPosition() const
 {
     return position;
 }
