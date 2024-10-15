@@ -90,6 +90,11 @@ void Payroll::generatePaySlips() {
   calculateTotalCost();
 }
 
+// Allow managers to add money
+void Payroll::addCompanyFund(double companyFund) {
+  this->companyFund = companyFund;
+}
+
 // Getter functions defined
 int Payroll::getNumberOfEmployees() { return employees.size(); }
 double Payroll::getTaxRate() { return taxRate; }
