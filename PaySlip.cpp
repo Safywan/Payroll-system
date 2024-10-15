@@ -39,14 +39,16 @@ void PaySlip::setGrossPay(float gross_pay) { this->gross_pay = gross_pay; }
 void PaySlip::setNetPay(float net_pay) { this->net_pay = net_pay; }
 
 void PaySlip::generateSlip() {
+  // The file name will be the employee id
   std::string filename = to_string(employee_id) + ".txt";
-  // TODO: Finalize file format
   ofstream outfile;
+
+  // Check if the file is successfully opened
   outfile.open(filename);
   if (outfile.is_open()) {
     outfile << "Employee ID: " << employee_id << endl;
-    outfile << "Gross Pay: $" << gross_pay << endl;
-    outfile << "Net Pay: $" << net_pay << endl;
+    outfile << std::fixed << "Gross Pay: $" << gross_pay << endl;
+    outfile << std::fixed << "Net Pay: $" << net_pay << endl;
     outfile.close();
   } else {
     cerr << "Error opening file" << endl;

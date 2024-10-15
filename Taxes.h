@@ -5,9 +5,11 @@
 
 class Taxes : public Adjustment {
  public:
+  // Constructor
   Taxes(float rate);
-  float calculateAdjustment(
-      float income);  // Override to calculate tax based on income
+
+  // Overides abstract base class
+  float calculateAdjustment(float income);
 };
 
 #endif
