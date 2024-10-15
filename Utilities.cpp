@@ -252,3 +252,31 @@ void Utilities::CreatePayslip(Payroll *payroll_ptr) {
 
   } while (response != 1 and response != 6);
 }
+void Utilities::initialisePayroll(Payroll *payroll_ptr)
+{
+    // Ask how much is in the company account
+    double initCompanyAmount;
+    cout << "Creating new Payroll..." << endl;
+    cout << "How much is in the company account:$ ";
+    cin >> initCompanyAmount;
+
+    // Initialise Payroll
+    *payroll_ptr = Payroll(initCompanyAmount);
+}
+
+// Add more fund if needed by manager
+void Utilities::addCompanyFund(Payroll *payroll_ptr) {
+      double addFund;
+  cout << "Add money to your account: ";
+  cin >> addFund;
+
+  // Update the account
+  payroll_ptr->setCompanyFund(addFund);
+
+  // Show how much was added
+  cout << "$" << addFund << " was added to your account!" << endl;
+  cout << "Your current balance is: " << "$" << payroll_ptr->getCompanyFund()
+       << endl;
+
+}
+

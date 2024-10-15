@@ -1,5 +1,7 @@
 #include "Payroll.h"
 
+#include <iostream>
+
 using namespace std;
 
 Payroll::Payroll() {
@@ -88,6 +90,11 @@ void Payroll::generatePaySlips() {
     payslip.generateSlip();
   }
   calculateTotalCost();
+}
+
+// Allow managers to add money. This will be done through utility class
+void Payroll::setCompanyFund(double addFund) {
+  this->companyFund = companyFund + addFund;
 }
 
 // Getter functions defined
