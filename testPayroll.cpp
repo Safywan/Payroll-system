@@ -33,13 +33,13 @@ class PayRollTest {
     cout << "Testing adding employee feature..." << endl;
     cout << "\n";
     // Create different employees
-    Employee employee1("Jacky", 1, 33, true, "Sales", FullTime, 32500,
+    Employee employee1("Jacky", 1, 33, true, "Sales", FullTime, 1000,
                        40);  // Constructor from the employee class
-    Employee employee2("Anna", 2, 29, false, "Marketing", PartTime, 28.5, 25);
+    Employee employee2("Anna", 2, 29, false, "Marketing", PartTime, 20.5, 25);
     Employee employee3("Brian", 3, 45, true, "HR", FullTime, 40.0, 38);
-    Employee employee4("Sophia", 4, 22, true, "Engineering", FullTime, 60000,
+    Employee employee4("Sophia", 4, 22, true, "Engineering", FullTime, 50000,
                        40);
-    Employee employee5("Michael", 5, 38, false, "Finance", PartTime, 33.223,
+    Employee employee5("Michael", 5, 38, false, "Finance", PartTime, 19.223,
                        20);
     Employee employee6("Emily", 6, 50, true, "Management", FullTime, 55.2,
                        45000);
@@ -117,7 +117,7 @@ class PayRollTest {
                        40);  // Constructor from the employee class
     Employee employee2("Anna", 2, 29, false, "Marketing", PartTime, 28.5, 25);
     Employee employee3("Brian", 3, 45, true, "HR", FullTime, 40.0, 38);
-    Employee employee4("Sophia", 4, 22, true, "Engineering", FullTime, 60000,
+    Employee employee4("Sophia", 4, 22, true, "Engineering", FullTime, 40000,
                        40);
     // Add employee
     companyX.addEmployee(employee1);
