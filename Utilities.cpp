@@ -3,14 +3,18 @@
 using namespace std;
 
 void Utilities::removeEmployee(Payroll *payroll_ptr) {
-  // Remove Employee from payroll by prompting user for employeeID
-  int id;
-  cout << "Enter the ID of the Employee you are trying to remove: ";
-  cin >> id;
-  if (payroll_ptr->removeEmployee(id)) {
-    cout << "Employee removed successfully" << endl;
+  if (payroll_ptr->getNumberOfEmployees() == 0) {
+    cout << "You currently have no employees in your payroll system." << endl;
   } else {
-    cout << "Invalid Employee ID. Try again" << endl;
+    // Remove Employee from payroll by prompting user for employeeID
+    int id;
+    cout << "Enter the ID of the Employee you are trying to remove: ";
+    cin >> id;
+    if (payroll_ptr->removeEmployee(id)) {
+      cout << "Employee removed successfully" << endl;
+    } else {
+      cout << "Invalid Employee ID. Try again" << endl;
+    }
   }
 }
 
@@ -24,13 +28,13 @@ void Utilities::addNewEmployee(Payroll *payroll_ptr) {
 
   // prompting the user for all the details
   cout << "Enter the Name: ";
-  cin >> name;
+  getline(cin,name);
   cout << "Enter the EmployeeID: ";
   cin >> employeeID;
   cout << "Enter the Employee's age: ";
   cin >> age;
   cout << "Enter the Employee's position: ";
-  cin >> position;
+  getline(cin,position);
   cout << "Enter the Pay Rate (per hour): ";
   cin >> pay_rate;
 
