@@ -1,7 +1,7 @@
 // This unit test ensures that call the compononents in the payroll class is
 // working without any errors
 #include <iostream>
-
+#include <iomanip>
 #include "Payroll.h"
 using namespace std;
 
@@ -107,12 +107,51 @@ class PayRollTest {
     cout << "\n";
     cout << "Testing the processing payroll featuure..." << endl;
     cout << "\n";
+
+    // Initialise with the company fund
+    Payroll companyX(5000000);
+
+    // Create some employees
+    Employee employee1("Jacky", 1, 33, true, "Sales", FullTime, 32500,
+                       40);  // Constructor from the employee class
+    Employee employee2("Anna", 2, 29, false, "Marketing", PartTime, 28.5, 25);
+    Employee employee3("Brian", 3, 45, true, "HR", FullTime, 40.0, 38);
+    Employee employee4("Sophia", 4, 22, true, "Engineering", FullTime, 60000,
+                       40);
+    // Add employee
+    companyX.addEmployee(employee1);
+    companyX.addEmployee(employee2);
+    companyX.addEmployee(employee3);
+    companyX.addEmployee(employee4);
+
+    // Check balance before automating payroll
+    cout << "You have $" << std::fixed << std::setprecision(3) << companyX.getCompanyFund()
+         << " before processing money." << endl;
+    
+    // Calculate total payment
+    companyX.calculateTotalCost();
+
+    // Check the total spending
+    cout << "The total money required to be processed: $" << std::fixed << std::setprecision(3)
+         << companyX.getTotalCost() << endl;
+
+    cout << "\n";
+
+    // Automate money
+    bool processMoney = companyX.processPayRoll();
+
+    if (processMoney == true) {
+      cout << "Salary has been processed for all the employeees!" << endl;
+      cout << "Your current balance is: " << companyX.getCompanyFund() << endl;
+    } else {
+      cout << "Failed to process money. No sufficient fund" << endl;
+    }
   }
   // Unit test processPayroll
   // ADD MORE TESTS!!
   /*
   Test the following functions:
-  1. processPayroll
+  1. processPayroll [Done]
   2. removeEmployee [Done]
   3. addPayslip
   4. getEmployeeDetails
@@ -125,6 +164,7 @@ class PayRollTest {
     testAddEmployee();
     testTotalCost();
     testRemoveEmployee();
+    testProcessPayroll();
   }
 };
 // Testing in main function

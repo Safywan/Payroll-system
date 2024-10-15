@@ -1,4 +1,5 @@
 #include <fstream>
+#include <iomanip>
 #include <iostream>
 
 #include "Utilities.h"
@@ -52,6 +53,7 @@ int main() {
     cout << "7. Add fund to the company account" << endl;
     cout << "8. Check your fund" << endl;
     cout << "9. Create a Payslip for an employee" << endl;
+    cout << "10. View the number of employees in the system: " << endl;
     cout << "Enter your response: ";
 
     cin >> response;
@@ -68,7 +70,14 @@ int main() {
         Utilities::removeEmployee(&payroll);
         break;
       case 3:  // Output total company cost
-        cout << "The total cost is: " << payroll.getTotalCost() << endl;
+        if (payroll.getNumberOfEmployees() > 0) {
+          payroll.calculateTotalCost();
+          cout << "The total cost is: " << std::fixed << payroll.getTotalCost()
+               << endl;
+        } else {
+          cout << "The cost is 0 as there is no employees in the system"
+               << endl;
+        }
         break;
       case 4:  // Process Payroll
         if (payroll.processPayRoll()) {
@@ -91,10 +100,15 @@ int main() {
         Utilities::addCompanyFund(&payroll);
         break;
       case 8:
-        cout << "Your account balance:$" << payroll.getCompanyFund() << endl;
+        cout << "Your account balance:$" << std::fixed
+             << payroll.getCompanyFund() << endl;
         break;
       case 9:  // Create Payslip
         Utilities::CreatePayslip(&payroll);
+        break;
+      case 10:
+        cout << "The number of employees currently in the system: "
+             << payroll.getNumberOfEmployees() << endl;
       default:
         cout << "Invalid number";
     }

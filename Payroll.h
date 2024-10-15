@@ -10,7 +10,7 @@ class Payroll {
  private:
   double taxRate;           // Tax rate
   double totalPayRollCost;  // Cost of total wages
-  double companyFund;       // Salaries are paid from the company fund
+  long double companyFund;  // Salaries are paid from the company fund
   // Array of payslips
   vector<PaySlip> payslips;
   // Number of employees in the company
@@ -19,7 +19,7 @@ class Payroll {
  public:
   // Constructor
   Payroll();
-  Payroll(double companyFund);
+  Payroll(long double companyFund);
   // Process payroll
   bool processPayRoll();      // Process the payroll for all employees
   void calculateTotalCost();  // Calculates the total cost (including tax and
@@ -40,7 +40,7 @@ class Payroll {
   // Getter functions for data members
   double getTaxRate();
   double getTotalCost();
-  double getCompanyFund();
+  long double getCompanyFund();
   int getNumberOfEmployees();
   vector<Employee> getEmployees();
 };

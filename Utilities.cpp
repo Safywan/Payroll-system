@@ -292,7 +292,7 @@ void Utilities::addCompanyFund(Payroll *payroll_ptr) {
   payroll_ptr->setCompanyFund(addFund);
 
   // Show how much was added
-  cout << "$" << addFund << " was added to your account!" << endl;
+  cout << "$" << std::fixed << addFund << " was added to your account!" << endl;
   cout << "Your current balance is: " << "$" << payroll_ptr->getCompanyFund()
        << endl;
 }

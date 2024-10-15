@@ -10,7 +10,7 @@ Payroll::Payroll() {
 }
 
 // Constructor that initialises company fund
-Payroll::Payroll(double companyFund) {
+Payroll::Payroll(long double companyFund) {
   this->companyFund = companyFund;
   this->totalPayRollCost = 0;
 }
@@ -100,6 +100,6 @@ void Payroll::setCompanyFund(double addFund) {
 // Getter functions defined
 int Payroll::getNumberOfEmployees() { return employees.size(); }
 double Payroll::getTaxRate() { return taxRate; }
-double Payroll::getCompanyFund() { return companyFund; }
+long double Payroll::getCompanyFund() { return companyFund; }
 double Payroll::getTotalCost() { return totalPayRollCost; }
 vector<Employee> Payroll::getEmployees() { return employees; }
