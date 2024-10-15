@@ -147,17 +147,9 @@ class PayRollTest {
       cout << "Failed to process money. No sufficient fund" << endl;
     }
   }
-  // Unit test processPayroll
-  // ADD MORE TESTS!!
-  /*
-  Test the following functions:
-  1. processPayroll [Done]
-  2. removeEmployee [Done]
-  3. addPayslip
-  4. getEmployeeDetails
-  5. generatePayslips
-  */
-
+void testGenerateSlip() {
+  payroll.generatePaySlips();
+}
  public:
   void runTests() {
     testDefinedConstructor();
@@ -165,6 +157,7 @@ class PayRollTest {
     testTotalCost();
     testRemoveEmployee();
     testProcessPayroll();
+    testGenerateSlip();
   }
 };
 // Testing in main function
