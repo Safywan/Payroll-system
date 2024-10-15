@@ -205,12 +205,12 @@ void Utilities::CreatePayslip(Payroll *payroll_ptr) {
     // Print options
     cout << "Enter the number of the option you wish to do:" << endl;
     cout << "1. Cancel" << endl;
-    cout << "2. View all Employee Details";
+    cout << "2. View all Employee Details" << endl;
     cout << "3. Modify work hours" << endl;
     cout << "4. Add taxes" << endl;
     cout << "5. Add super" << endl;
     cout << "6. Save Payslip" << endl;
-
+    cout << "Enter your response: ";
     response = Utilities::getNonNegativeNumber<int>();
     cout << endl;
     string super_provider;
