@@ -1,5 +1,8 @@
 #include "Utilities.h"
 
+#include <iostream>
+#include <string>
+
 using namespace std;
 
 void Utilities::removeEmployee(Payroll *payroll_ptr) {
@@ -28,13 +31,15 @@ void Utilities::addNewEmployee(Payroll *payroll_ptr) {
 
   // prompting the user for all the details
   cout << "Enter the Name: ";
-  getline(cin,name);
+  cin.ignore();
+  getline(cin, name);
   cout << "Enter the EmployeeID: ";
   cin >> employeeID;
   cout << "Enter the Employee's age: ";
   cin >> age;
   cout << "Enter the Employee's position: ";
-  getline(cin,position);
+  cin.ignore();
+  getline(cin, position);
   cout << "Enter the Pay Rate (per hour): ";
   cin >> pay_rate;
 
