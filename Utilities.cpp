@@ -181,7 +181,7 @@ Employee *Utilities::getEmployeeFromId(Payroll payroll) {
 }
 
 void Utilities::CreatePayslip(Payroll *payroll_ptr) {
-  cout << "Retrieving the data of the relevant Employee..";
+  cout << "Retrieving the data of the relevant Employee.." << endl;
 
   // Use the below function to validate the ID and get the employee
   Employee *employee_ptr = Utilities::getEmployeeFromId(*payroll_ptr);
