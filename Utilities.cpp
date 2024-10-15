@@ -182,7 +182,7 @@ void Utilities::CreatePayslip(Payroll *payroll_ptr) {
   do {
     // give a bit of background
     cout << employee_ptr->getName() << " has worked for "
-         << employee_ptr->getHoursWorked() << " hours at an hourly rate of"
+         << employee_ptr->getHoursWorked() << " hours at an hourly rate of "
          << employee_ptr->getPayRate() << endl;
     cout << "They will be paid: $" << employee_ptr->calculateTotalPayment()
          << endl
