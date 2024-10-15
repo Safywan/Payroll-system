@@ -9,6 +9,7 @@ protected:
 
 public:
     Adjustment(float rate);
+    virtual ~Adjustment();
     virtual float calculateAdjustment(float income);
 };
 

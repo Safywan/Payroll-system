@@ -151,17 +151,6 @@ void Utilities::loadData(Payroll *payroll_ptr) {
   }
 }
 
-void Utilities::initialisePayroll(Payroll *payroll_ptr) {
-  // Ask how much is in the company account
-  double initCompanyAmount;
-  cout << "Creating new Payroll..." << endl;
-  cout << "How much is in the company account: " << endl;
-  cin >> initCompanyAmount;
-
-  // Initialise Payroll
-  *payroll_ptr = Payroll(initCompanyAmount);
-}
-
 Employee *Utilities::getEmployeeFromId(Payroll payroll) {
   Employee *employee_ptr = nullptr;
 
@@ -209,64 +198,74 @@ void Utilities::CreatePayslip(Payroll *payroll_ptr) {
     cout << "6. Save Payslip" << endl;
 
     cin >> response;
+    cout << endl;
     string super_provider;
 
     switch (response) {
-      case 1:
+      case 1:  // Exit
         cout << "Heading back" << endl;
         break;
-      case 2:
-        Utilities::viewEmployeeDetails(*payroll_ptr);
+      case 2:  // view details
+        cout << "ID: " << employee_ptr->getEmployeeID() << endl;
+        cout << "Name: " << employee_ptr->getName() << endl;
+        cout << "Position: " << employee_ptr->getPosition() << endl;
+        cout << "Age: " << employee_ptr->getAge() << endl;
+        cout << "PayRate: " << employee_ptr->getPayRate() << endl;
+        cout << "Hours Worked: " << employee_ptr->getHoursWorked() << endl;
+
         break;
-      case 3:
+      case 3:  // set hours worked
         cout << "Enter Number of Hours: ";
         int hours;
         cin >> hours;
         employee_ptr->setHoursWorked(hours);
         cout << "Hours set successfully";
         break;
-      case 4:
+      case 4: {
         cout << "Enter the tax rate: ";
-        float rate;
-        cin >> rate;
-        Taxes *tax_ptr = new Taxes(rate);
+        float tax_rate;
+        cin >> tax_rate;
+        Taxes *tax_ptr = new Taxes(tax_rate);
         payslip.addAdjustment(tax_ptr);
         break;
-      case 5:
+      }
+      case 5: {
         cout << "Enter the super rate: ";
-        float rate;
-        cin >> rate;
+        float super_rate;
+        cin >> super_rate;
         cout << "Enter the provider";
         cin >> super_provider;
-        SuperAnnuation *super_ptr = new SuperAnnuation(rate, super_provider);
+        SuperAnnuation *super_ptr =
+            new SuperAnnuation(super_rate, super_provider);
         payslip.addAdjustment(super_ptr);
         break;
-      case 6:
+      }
+      case 6: {
         cout << "Saving Payslip" << endl;
         payroll_ptr->addPaySlip(payslip);
         break;
+      }
       default:
-        cout << "Invalid response. Try again please" << endl;
+        cout << "Invalid option" << endl;
         break;
     }
-
+    cout << endl << endl;
   } while (response != 1 and response != 6);
 }
-void Utilities::initialisePayroll(Payroll *payroll_ptr)
-{
-    // Ask how much is in the company account
-    double initCompanyAmount;
-    cout << "Creating new Payroll..." << endl;
-    cout << "How much is in the company account:$ ";
-    cin >> initCompanyAmount;
+void Utilities::initialisePayroll(Payroll *payroll_ptr) {
+  // Ask how much is in the company account
+  double initCompanyAmount;
+  cout << "Creating new Payroll..." << endl;
+  cout << "How much is in the company account:$ ";
+  cin >> initCompanyAmount;
 
-    // Initialise Payroll
-    *payroll_ptr = Payroll(initCompanyAmount);
+  // Initialise Payroll
+  *payroll_ptr = Payroll(initCompanyAmount);
 }
 
 // Add more fund if needed by manager
 void Utilities::addCompanyFund(Payroll *payroll_ptr) {
-      double addFund;
+  double addFund;
   cout << "Add money to your account: ";
   cin >> addFund;
 
@@ -277,6 +276,4 @@ void Utilities::addCompanyFund(Payroll *payroll_ptr) {
   cout << "$" << addFund << " was added to your account!" << endl;
   cout << "Your current balance is: " << "$" << payroll_ptr->getCompanyFund()
        << endl;
-
 }
-
