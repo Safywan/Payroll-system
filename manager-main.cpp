@@ -53,6 +53,7 @@ int main()
         cout << "5. Process Payroll and pay outstanding balance" << endl;
         cout << "6. Generate Payslips for all Employees" << endl;
         cout << "7. View Details of all Employees" << endl;
+        cout << "8. Create a Payslip for an employee" << endl;
         cout << "Enter your response: ";
 
         cin >> response;
@@ -90,6 +91,8 @@ int main()
         case 7: // View number of employees
             Utilities::viewEmployeeDetails(payroll);
             break;
+        case 8: // Create Payslip
+            Utilities::CreatePayslip(&payroll);
         default:
             cout << "Invalid number";
         }
