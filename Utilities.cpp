@@ -211,7 +211,7 @@ void Utilities::CreatePayslip(Payroll *payroll_ptr) {
     cout << "5. Add super" << endl;
     cout << "6. Save Payslip" << endl;
     cout << "Enter your response: ";
-    response = Utilities::getNonNegativeNumber<int>();
+    response = Utilities::getNonNegativeNumber<double>();
     cout << endl;
     string super_provider;
 
