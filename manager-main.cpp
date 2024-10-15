@@ -1,6 +1,7 @@
 #include <fstream>
 #include <iomanip>
 #include <iostream>
+#include <limits>
 
 #include "Utilities.h"
 
@@ -17,20 +18,25 @@ int main() {
     char response;
     cout << "Save file detected. Do you want to load from the saved data? "
             "(y/n): ";
-    cin >> response;
-    do {
-      switch (response) {
-        case 'y':
-          Utilities::loadData(&payroll);
-          break;
-        case 'n':
-          Utilities::initialisePayroll(&payroll);
-          break;
-        default:
-          cout << "Invalid option";
-          break;
-      }
-    } while (response != 'y' and response != 'n');
+    while (!(cin >> response) or !(response == 'y' or response == 'n')) {
+      // Clear the error flags on the input stream.
+      cin.clear();
+
+      // leave the rest of the line
+      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      cout << "Invalid option. Please only use y or n: ";
+    }
+    switch (response) {
+      case 'y':
+        Utilities::loadData(&payroll);
+        break;
+      case 'n':
+        Utilities::initialisePayroll(&payroll);
+        break;
+      default:
+        cout << "Invalid option. Try again:";
+        break;
+    }
   } else {
     cout << "No save file detected. Initialising new payroll" << endl;
     Utilities::initialisePayroll(&payroll);
@@ -56,7 +62,8 @@ int main() {
     cout << "10. View the number of employees in the system: " << endl;
     cout << "Enter your response: ";
 
-    cin >> response;
+    response = Utilities::sanitizeInput<int>();
+
     cout << endl;
     switch (response) {
       case 0:  // Exit
@@ -109,6 +116,7 @@ int main() {
       case 10:
         cout << "The number of employees currently in the system: "
              << payroll.getNumberOfEmployees() << endl;
+        break;
       default:
         cout << "Invalid number";
     }

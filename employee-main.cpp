@@ -35,7 +35,7 @@ int main() {
     cout << "4. Get other details" << endl;
     cout << "Enter your response: ";
 
-    cin >> response;
+    response = Utilities::sanitizeInput<int>();
     cout << endl;
 
     switch (response) {
@@ -46,7 +46,7 @@ int main() {
       case 2:  // set num_hours
         cout << "Enter Number of Hours: ";
         int hours;
-        cin >> hours;
+        hours = Utilities::getNonNegativeNumber<int>();
         employee_ptr->setHoursWorked(hours);
         cout << "Hours set successfully";
         break;

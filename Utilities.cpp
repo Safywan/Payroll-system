@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include <limits>
 
 using namespace std;
 
@@ -12,7 +13,7 @@ void Utilities::removeEmployee(Payroll *payroll_ptr) {
     // Remove Employee from payroll by prompting user for employeeID
     int id;
     cout << "Enter the ID of the Employee you are trying to remove: ";
-    cin >> id;
+    id = Utilities::getNonNegativeNumber<int>();
     if (payroll_ptr->removeEmployee(id)) {
       cout << "Employee removed successfully" << endl;
     } else {
@@ -31,21 +32,25 @@ void Utilities::addNewEmployee(Payroll *payroll_ptr) {
 
   // prompting the user for all the details
   cout << "Enter the Name: ";
-  cin.ignore();
-  getline(cin, name);
+  //   cin.ignore();
+  name = Utilities::sanitizeInput<string>();
   cout << "Enter the EmployeeID: ";
-  cin >> employeeID;
+  employeeID = Utilities::getNonNegativeNumber<int>();
   cout << "Enter the Employee's age: ";
-  cin >> age;
+  age = Utilities::getNonNegativeNumber<int>();
   cout << "Enter the Employee's position: ";
-  cin.ignore();
-  getline(cin, position);
+  //   cin.ignore();
+  position = Utilities::sanitizeInput<string>();
   cout << "Enter the Pay Rate (per hour): ";
-  cin >> pay_rate;
+  pay_rate = Utilities::getNonNegativeNumber<int>();
 
   cout << "Enter if the Employee works Full Time(0), PartTime(1), Casual(2) or "
           "Contact(3): ";
-  cin >> work_type_int;
+  work_type_int = Utilities::sanitizeInput<int>();
+  while (work_type_int < 0 or work_type_int > 3) {
+    cout << "Invalid input. The number should be 0,1,2 or 3. Try again: ";
+    work_type_int = Utilities::sanitizeInput<int>();
+  }
 
   work_type = static_cast<WorkType>(work_type_int);
 
@@ -166,7 +171,7 @@ Employee *Utilities::getEmployeeFromId(Payroll payroll) {
   while (employee_ptr == nullptr) {
     cout << "Enter the ID: ";
     int id;
-    cin >> id;
+    id = Utilities::getNonNegativeNumber<int>();
     employee_ptr = payroll.getEmployee(id);
     if (employee_ptr == nullptr) {
       cout << "Invalid ID. Try again" << endl;
@@ -206,7 +211,7 @@ void Utilities::CreatePayslip(Payroll *payroll_ptr) {
     cout << "5. Add super" << endl;
     cout << "6. Save Payslip" << endl;
 
-    cin >> response;
+    response = Utilities::getNonNegativeNumber<int>();
     cout << endl;
     string super_provider;
 
@@ -226,14 +231,14 @@ void Utilities::CreatePayslip(Payroll *payroll_ptr) {
       case 3:  // set hours worked
         cout << "Enter Number of Hours: ";
         int hours;
-        cin >> hours;
+        hours = Utilities::getNonNegativeNumber<int>();
         employee_ptr->setHoursWorked(hours);
         cout << "Hours set successfully";
         break;
       case 4: {
         cout << "Enter the tax rate: ";
         float tax_rate;
-        cin >> tax_rate;
+        tax_rate = Utilities::getNonNegativeNumber<float>();
         Taxes *tax_ptr = new Taxes(tax_rate);
         payslip.addAdjustment(tax_ptr);
         break;
@@ -241,9 +246,9 @@ void Utilities::CreatePayslip(Payroll *payroll_ptr) {
       case 5: {
         cout << "Enter the super rate: ";
         float super_rate;
-        cin >> super_rate;
+        super_rate = Utilities::getNonNegativeNumber<float>();
         cout << "Enter the provider";
-        cin >> super_provider;
+        super_provider = Utilities::sanitizeInput<string>();
         SuperAnnuation *super_ptr =
             new SuperAnnuation(super_rate, super_provider);
         payslip.addAdjustment(super_ptr);
@@ -265,14 +270,8 @@ void Utilities::initialisePayroll(Payroll *payroll_ptr) {
   // Ask how much is in the company account
   double initCompanyAmount;
   cout << "Creating new Payroll..." << endl;
-  cout << "How much is in the company account:$ ";
-  cin >> initCompanyAmount;
-
-  // Does not accept negative money  
-  while (initCompanyAmount < 0) {
-    cout << "Please enter a valid amount: $";
-    cin >> initCompanyAmount;
-  }
+  cout << "How much is in the company account: $";
+  initCompanyAmount = Utilities::getNonNegativeNumber<double>();
   // Initialise Payroll
   *payroll_ptr = Payroll(initCompanyAmount);
 }
@@ -281,13 +280,8 @@ void Utilities::initialisePayroll(Payroll *payroll_ptr) {
 void Utilities::addCompanyFund(Payroll *payroll_ptr) {
   double addFund;
   cout << "Add money to your account:$ ";
-  cin >> addFund;
+  addFund = Utilities::getNonNegativeNumber<double>();
 
-  // Check if the user entered a negative number
-  while (addFund < 0) {
-    cout << "Please enter a valid amount: $";
-    cin >> addFund;
-  }
   // Update the account
   payroll_ptr->setCompanyFund(addFund);
 
@@ -295,4 +289,29 @@ void Utilities::addCompanyFund(Payroll *payroll_ptr) {
   cout << "$" << std::fixed << addFund << " was added to your account!" << endl;
   cout << "Your current balance is: " << "$" << payroll_ptr->getCompanyFund()
        << endl;
+}
+
+//Takes an input and ensures it is the right type. If it is not, it will keep prompting the user till its right
+template <typename T>
+T Utilities::sanitizeInput() {
+  T response;
+  while (!(cin >> response) ) {
+    // Clear the error flags on the input stream.
+    cin.clear();
+
+    // leave the rest of the line
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cout << "Invalid response. Please try again: ";
+  }
+  return response;
+}
+
+template <typename T>
+T Utilities::getNonNegativeNumber() {
+  T response = Utilities::sanitizeInput<T>();
+  while (response < 0) {
+    cout << "The response must be non-negative. Try again: ";
+    response = Utilities::sanitizeInput<T>();
+  }
+  return response;
 }
