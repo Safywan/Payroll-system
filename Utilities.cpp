@@ -268,6 +268,10 @@ void Utilities::initialisePayroll(Payroll *payroll_ptr) {
   cout << "How much is in the company account:$ ";
   cin >> initCompanyAmount;
 
+  while (initCompanyAmount < 0) {
+    cout << "Please enter a valid amount: $";
+    cin >> initCompanyAmount;
+  }
   // Initialise Payroll
   *payroll_ptr = Payroll(initCompanyAmount);
 }
@@ -275,9 +279,14 @@ void Utilities::initialisePayroll(Payroll *payroll_ptr) {
 // Add more fund if needed by manager
 void Utilities::addCompanyFund(Payroll *payroll_ptr) {
   double addFund;
-  cout << "Add money to your account: ";
+  cout << "Add money to your account:$ ";
   cin >> addFund;
 
+  // Check if the user entered a negative number
+  while (addFund < 0) {
+    cout << "Please enter a valid amount: $";
+    cin >> addFund;
+  }
   // Update the account
   payroll_ptr->setCompanyFund(addFund);
 

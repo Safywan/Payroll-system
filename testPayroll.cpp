@@ -102,6 +102,12 @@ class PayRollTest {
     }
   }
 
+  // Unit test process payroll
+  void testProcessPayroll() {
+    cout << "\n";
+    cout << "Testing the processing payroll featuure..." << endl;
+    cout << "\n";
+  }
   // Unit test processPayroll
   // ADD MORE TESTS!!
   /*
