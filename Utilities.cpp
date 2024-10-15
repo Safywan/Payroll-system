@@ -33,14 +33,14 @@ void Utilities::addNewEmployee(Payroll *payroll_ptr) {
   // prompting the user for all the details
   cout << "Enter the Name: ";
   cin.ignore();
-  getline(cin,name);
+  getline(cin, name);
   cout << "Enter the EmployeeID: ";
   employeeID = Utilities::getNonNegativeNumber<int>();
   cout << "Enter the Employee's age: ";
   age = Utilities::getNonNegativeNumber<int>();
   cout << "Enter the Employee's position: ";
   cin.ignore();
-  getline(cin,position);
+  getline(cin, position);
   cout << "Enter the Pay Rate (per hour): ";
   pay_rate = Utilities::getNonNegativeNumber<int>();
 
