@@ -268,6 +268,7 @@ void Utilities::initialisePayroll(Payroll *payroll_ptr) {
   cout << "How much is in the company account:$ ";
   cin >> initCompanyAmount;
 
+  // Does not accept negative money  
   while (initCompanyAmount < 0) {
     cout << "Please enter a valid amount: $";
     cin >> initCompanyAmount;

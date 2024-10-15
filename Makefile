@@ -29,3 +29,5 @@ testUser: testUser.cpp $(cpp_files) $(h_files)
 
 clean : 
 	rm *.out
+cleanSlips:
+	rm *.txt
