@@ -1,8 +1,8 @@
 #include "Utilities.h"
 
 #include <iostream>
-#include <string>
 #include <limits>
+#include <string>
 
 using namespace std;
 
@@ -188,7 +188,7 @@ void Utilities::CreatePayslip(Payroll *payroll_ptr) {
 
   cout << "Creating Payslip for: " << employee_ptr->getName();
 
-  // Initalise the payslip
+  // Initialise the payslip
   PaySlip payslip = PaySlip(employee_ptr->getEmployeeID(),
                             employee_ptr->calculateTotalPayment());
 
@@ -291,11 +291,12 @@ void Utilities::addCompanyFund(Payroll *payroll_ptr) {
        << endl;
 }
 
-//Takes an input and ensures it is the right type. If it is not, it will keep prompting the user till its right
+// Takes an input and ensures it is the right type. If it is not, it will keep
+// prompting the user till its right
 template <typename T>
 T Utilities::sanitizeInput() {
   T response;
-  while (!(cin >> response) ) {
+  while (!(cin >> response)) {
     // Clear the error flags on the input stream.
     cin.clear();
 

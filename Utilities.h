@@ -26,7 +26,7 @@ class Utilities {
   static void CreatePayslip(Payroll *payroll_ptr);
   static void addCompanyFund(Payroll *payroll_ptr);
 
-  //Input validation
+  // Input validation
   template <typename T>
   static T sanitizeInput();
 
@@ -35,4 +35,3 @@ class Utilities {
 };
 
 #endif
-

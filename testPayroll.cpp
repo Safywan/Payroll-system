@@ -1,7 +1,8 @@
-// This unit test ensures that call the compononents in the payroll class is
+// This unit test ensures that call the components in the payroll class is
 // working without any errors
-#include <iostream>
 #include <iomanip>
+#include <iostream>
+
 #include "Payroll.h"
 using namespace std;
 
@@ -11,7 +12,7 @@ class PayRollTest {
   Payroll payroll;
 
   void testDefinedConstructor() {
-    // Parameterised constructor
+    // Parameterized constructor
     Payroll payFund(99000);
     if (payFund.getCompanyFund() < 0) {
       cout << "Company fund was not updated. Test failed!" << endl;
@@ -52,7 +53,7 @@ class PayRollTest {
 
     for (int i = 0; i < payroll.getNumberOfEmployees(); i++) {
       if (i < payroll.getNumberOfEmployees()) {
-        cout << "Employee " << i + 1 << " added succesfully!" << endl;
+        cout << "Employee " << i + 1 << " added successfully!" << endl;
       } else {
         cout << "Employee " << i + 1 << " could not be added!" << endl;
       }
@@ -62,7 +63,7 @@ class PayRollTest {
   // Calculate employee salary test
   void testTotalCost() {
     cout << "\n";
-    cout << "Testing the calculations system for employess..." << endl;
+    cout << "Testing the calculations system for employees..." << endl;
     cout << "\n";
     // Check the total cost before calculation
     if (payroll.getTotalCost() > 0) {
@@ -105,7 +106,7 @@ class PayRollTest {
   // Unit test process payroll
   void testProcessPayroll() {
     cout << "\n";
-    cout << "Testing the processing payroll featuure..." << endl;
+    cout << "Testing the processing payroll feature..." << endl;
     cout << "\n";
 
     // Initialise with the company fund
@@ -125,15 +126,15 @@ class PayRollTest {
     companyX.addEmployee(employee4);
 
     // Check balance before automating payroll
-    cout << "You have $" << std::fixed << std::setprecision(3) << companyX.getCompanyFund()
-         << " before processing money." << endl;
-    
+    cout << "You have $" << std::fixed << std::setprecision(3)
+         << companyX.getCompanyFund() << " before processing money." << endl;
+
     // Calculate total payment
     companyX.calculateTotalCost();
 
     // Check the total spending
-    cout << "The total money required to be processed: $" << std::fixed << std::setprecision(3)
-         << companyX.getTotalCost() << endl;
+    cout << "The total money required to be processed: $" << std::fixed
+         << std::setprecision(3) << companyX.getTotalCost() << endl;
 
     cout << "\n";
 
@@ -141,15 +142,14 @@ class PayRollTest {
     bool processMoney = companyX.processPayRoll();
 
     if (processMoney == true) {
-      cout << "Salary has been processed for all the employeees!" << endl;
+      cout << "Salary has been processed for all the employees!" << endl;
       cout << "Your current balance is: " << companyX.getCompanyFund() << endl;
     } else {
       cout << "Failed to process money. No sufficient fund" << endl;
     }
   }
-void testGenerateSlip() {
-  payroll.generatePaySlips();
-}
+  void testGenerateSlip() { payroll.generatePaySlips(); }
+
  public:
   void runTests() {
     testDefinedConstructor();
@@ -162,13 +162,13 @@ void testGenerateSlip() {
 };
 // Testing in main function
 int main() {
-  PayRollTest payrolltests;
+  PayRollTest payroll_tests;
 
   cout << "Starting unit test for payroll class..." << endl;
   cout << "\n";
 
   // Test all the functionalities
-  payrolltests.runTests();
+  payroll_tests.runTests();
 
   return 0;
 }

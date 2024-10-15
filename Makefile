@@ -28,6 +28,4 @@ testUser: testUser.cpp $(cpp_files) $(h_files)
 	g++ -Wall -std=c++11 -o testUser.out testUser.cpp $(cpp_files)
 
 clean : 
-	rm *.out
-cleanSlips:
-	rm *.txt
+	rm *.out; rm *.txt
