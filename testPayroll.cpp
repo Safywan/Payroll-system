@@ -148,7 +148,18 @@ class PayRollTest {
       cout << "Failed to process money. No sufficient fund" << endl;
     }
   }
-  void testGenerateSlip() { payroll.generatePaySlips(); }
+  void testGenerateSlip() {
+    cout << "\n";
+    cout << "Testing payslip generation..." << endl;
+    // Create a payslip
+    PaySlip payslip(3, 3222);
+
+    // Add it to the payslip array
+    payroll.addPaySlip(payslip);
+
+    // Now generate
+    payroll.generatePaySlips();
+  }
 
  public:
   void runTests() {
