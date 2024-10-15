@@ -23,5 +23,9 @@ testEmployee:
 testSuperAnnuation: testSuperAnnuation.cpp $(cpp_files) $(h_files)
 	g++ -Wall -std=c++11 -o testSuperAnnuation.out testSuperAnnuation.cpp $(cpp_files)
 
+testTaxes: testTaxes.cpp Taxes.cpp Adjustment.cpp
+	g++ -Wall -std=c++11 -o testTaxes.out testTaxes.cpp Taxes.cpp Adjustment.cpp
+
+
 clean : 
 	rm *.out
