@@ -12,8 +12,10 @@ class User {
   bool is_active;
 
  public:
+  //Constructor
   User(const std::string &name, int employee_id, int age, bool is_active);
 
+  //Getters
   std::string getName() const;
   int getEmployeeID() const;
   int getAge() const;

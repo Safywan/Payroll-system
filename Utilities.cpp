@@ -59,6 +59,8 @@ void Utilities::addNewEmployee(Payroll *payroll_ptr) {
   payroll_ptr->addEmployee(newEmployee);
 }
 
+// View all details of all employees stored in the form:
+//  id | name | position | age
 void Utilities::viewEmployeeDetails(Payroll payroll) {
   int number_employees = payroll.getNumberOfEmployees();
   cout << "The current number of employees in the Payroll is: "
@@ -149,8 +151,9 @@ void Utilities::loadData(Payroll *payroll_ptr) {
       work_type = static_cast<WorkType>(buffer);
 
       // Create the Employee
-      payroll_ptr->addEmployee(Employee(name, employee_id, age, is_active, position,
-                                        work_type, pay_rate, hours_worked));
+      payroll_ptr->addEmployee(Employee(name, employee_id, age, is_active,
+                                        position, work_type, pay_rate,
+                                        hours_worked));
     }
     employee_file.close();
 
@@ -186,8 +189,8 @@ void Utilities::CreatePayslip(Payroll *payroll_ptr) {
   cout << "Creating Payslip for: " << employee_ptr->getName();
 
   // Initialise the payslip
-  PaySlip payslip = PaySlip(employee_ptr->getEmployeeID(),
-                            employee_ptr->calculateGrossPay());
+  PaySlip payslip =
+      PaySlip(employee_ptr->getEmployeeID(), employee_ptr->calculateGrossPay());
 
   int response;
   do {
@@ -195,8 +198,8 @@ void Utilities::CreatePayslip(Payroll *payroll_ptr) {
     cout << employee_ptr->getName() << " has worked for "
          << employee_ptr->getHoursWorked() << " hours at an hourly rate of "
          << employee_ptr->getPayRate() << endl;
-    cout << "They will be paid: $" << employee_ptr->calculateGrossPay()
-         << endl
+    cout << "They will be paid: $" << std::fixed
+         << employee_ptr->calculateGrossPay() << endl
          << endl;
 
     // Print options
@@ -284,7 +287,8 @@ void Utilities::addCompanyFund(Payroll *payroll_ptr) {
   payroll_ptr->setCompanyFund(add_fund);
 
   // Show how much was added
-  cout << "$" << std::fixed << add_fund << " was added to your account!" << endl;
+  cout << "$" << std::fixed << add_fund << " was added to your account!"
+       << endl;
   cout << "Your current balance is: " << "$" << payroll_ptr->getCompanyFund()
        << endl;
 }
