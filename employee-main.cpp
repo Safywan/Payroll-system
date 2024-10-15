@@ -52,7 +52,7 @@ int main() {
         break;
       case 3:
         cout << "This cycle you will be paid: $"
-             << employee_ptr->calculateTotalPayment() << endl;
+             << employee_ptr->calculateGrossPay() << endl;
         break;
       case 4:
         cout << "ID: " << employee_ptr->getEmployeeID() << endl;

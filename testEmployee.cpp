@@ -46,7 +46,7 @@ class EmployeeTest {
                       80000.0);
     float expectedPayment = 80000.0;  // Full-time employees have fixed salary
 
-    float calculatedPayment = employee.calculateTotalPayment();
+    float calculatedPayment = employee.calculateGrossPay();
 
     if (calculatedPayment != expectedPayment) {
       cout << "Test failed: Total payment for full-time is incorrect!" << endl;
@@ -65,7 +65,7 @@ class EmployeeTest {
     employee.setHoursWorked(30);  // Setting hours worked for part-time
 
     float expectedPayment = 20.0 * 30;  // Hourly rate * hours worked
-    float calculatedPayment = employee.calculateTotalPayment();
+    float calculatedPayment = employee.calculateGrossPay();
 
     if (calculatedPayment != expectedPayment) {
       cout << "Test failed: Total payment for part-time is incorrect!" << endl;

@@ -34,7 +34,7 @@ void Payroll::calculateTotalCost() {
   // Go through the employees and calculate their total cost using an iterator
   // to iterate over the vector
   for (auto it = employees.begin(); it != employees.end(); ++it) {
-    totalPayRollCost += it->calculateTotalPayment();
+    totalPayRollCost += it->calculateGrossPay();
   }
 }
 
@@ -62,7 +62,7 @@ void Payroll::addPaySlip(PaySlip payslip) { payslips.push_back(payslip); }
 
 // Returns employee details as a list of strings of the form
 // id|name|position|age
-std::string *Payroll::getEmployeeDetails() {
+std::string *Payroll::getEmployeesDetails() {
   std::string *details = new std::string[employees.size()];
   for (int i = 0; i < (int)employees.size(); i++) {
     Employee employee = employees[i];
