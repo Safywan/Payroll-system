@@ -20,5 +20,8 @@ testPayroll: testPayroll.cpp $(cpp_files) $(h_files)
 testEmployee:
 	g++ -Wall -std=c++11 -o testEmployee.out testEmployee.cpp $(cpp_files)
 
+testSuperAnnuation: testSuperAnnuation.cpp $(cpp_files) $(h_files)
+	g++ -Wall -std=c++11 -o testSuperAnnuation.out testSuperAnnuation.cpp $(cpp_files)
+
 clean : 
 	rm *.out
