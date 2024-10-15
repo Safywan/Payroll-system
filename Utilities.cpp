@@ -33,14 +33,14 @@ void Utilities::addNewEmployee(Payroll *payroll_ptr) {
   // prompting the user for all the details
   cout << "Enter the Name: ";
   //   cin.ignore();
-  name = Utilities::sanitizeInput<string>();
+  cin >> name;
   cout << "Enter the EmployeeID: ";
   employeeID = Utilities::getNonNegativeNumber<int>();
   cout << "Enter the Employee's age: ";
   age = Utilities::getNonNegativeNumber<int>();
   cout << "Enter the Employee's position: ";
   //   cin.ignore();
-  position = Utilities::sanitizeInput<string>();
+  cin >> position;
   cout << "Enter the Pay Rate (per hour): ";
   pay_rate = Utilities::getNonNegativeNumber<int>();
 
@@ -248,7 +248,7 @@ void Utilities::CreatePayslip(Payroll *payroll_ptr) {
         float super_rate;
         super_rate = Utilities::getNonNegativeNumber<float>();
         cout << "Enter the provider";
-        super_provider = Utilities::sanitizeInput<string>();
+        cin >> super_provider;
         SuperAnnuation *super_ptr =
             new SuperAnnuation(super_rate, super_provider);
         payslip.addAdjustment(super_ptr);
@@ -302,7 +302,8 @@ T Utilities::sanitizeInput() {
 
     // leave the rest of the line
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    cout << "Invalid response. Please try again: ";
+    cout << "Data type of response is unexpected. A number was expected. "
+            "Please try again: ";
   }
   return response;
 }
