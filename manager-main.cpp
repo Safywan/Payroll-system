@@ -61,7 +61,6 @@ int main() {
     cout << "9. Create a Payslip for an employee" << endl;
     cout << "10. View the number of employees in the system: " << endl;
     cout << "Enter your response: ";
-
     response = Utilities::sanitizeInput<int>();
 
     cout << endl;
