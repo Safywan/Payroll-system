@@ -49,6 +49,8 @@ int main() {
     cout << "5. Process Payroll and pay outstanding balance" << endl;
     cout << "6. Generate Payslips for all Employees" << endl;
     cout << "7. View Details of all Employees" << endl;
+    cout << "8. Add fund to the company account" << endl;
+    cout << "9. Check your fund" << endl;
     cout << "Enter your response: ";
 
     cin >> response;
@@ -72,13 +74,8 @@ int main() {
           cout << "The fund is processed! Thank you!" << endl;
         } else {
           cout << "Insufficient fund!. Please try again!" << endl;
-          // Suggestion -> Ask manager to add fund using addFund function from
-          // payRoll
-          double addFund;
-          cout << "Add more fund to your account: ";
-          cin >> addFund;
-          payroll.addCompanyFund(addFund);
-          cout << "\n";
+          // Suggestion -> Ask manager to add fund
+          Utilities::addCompanyFund(&payroll);
         }
         cout << "Your fund is currently: " << payroll.getCompanyFund() << endl;
         break;
@@ -89,6 +86,13 @@ int main() {
       case 7:  // View number of employees
         Utilities::viewEmployeeDetails(payroll);
         break;
+      case 8:  // Add fund to the company account
+        Utilities::addCompanyFund(&payroll);
+        break;
+      case 9:
+        cout << "Your account balance:$" << payroll.getCompanyFund() << endl;
+        break;
+
       default:
         cout << "Invalid number";
     }

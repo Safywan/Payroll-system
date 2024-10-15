@@ -175,3 +175,19 @@ void Utilities::initialisePayroll(Payroll *payroll_ptr)
     // Initialise Payroll
     *payroll_ptr = Payroll(initCompanyAmount);
 }
+
+// Add more fund if needed by manager
+void Utilities::addCompanyFund(Payroll *payroll_ptr) {
+      double addFund;
+  cout << "Add money to your account: ";
+  cin >> addFund;
+
+  // Update the account
+  payroll_ptr->setCompanyFund(addFund);
+
+  // Show how much was added
+  cout << "$" << addFund << " was added to your account!" << endl;
+  cout << "Your current balance is: " << "$" << payroll_ptr->getCompanyFund()
+       << endl;
+
+}

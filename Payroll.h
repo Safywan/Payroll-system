@@ -35,7 +35,7 @@ class Payroll {
   Employee *getEmployee(int employeeID);
 
   // If fund is low, manager can add fund
-  void addCompanyFund(double companyFund);
+  void setCompanyFund(double addFund);
 
   // Getter functions for data members
   double getTaxRate();
