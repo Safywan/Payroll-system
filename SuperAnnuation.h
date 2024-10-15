@@ -1,20 +1,22 @@
 #ifndef SUPERANNUATION_H
 #define SUPERANNUATION_H
 
-#include "Adjustment.h"
 #include <string>
 
-class SuperAnnuation : public Adjustment
-{
-private:
-    std::string provider; // Super provider name
+#include "Adjustment.h"
 
-public:
-    SuperAnnuation(float rate, const std::string &provider);
+class SuperAnnuation : public Adjustment {
+ private:
+  std::string provider;  // Super provider name
 
-    float calculateAdjustment(float income);         // Calculate superannuation adjustment
-    float calculateCompanyContribution(float income); // Company’s contribution based on income
-    std::string getProvider() const;
+ public:
+  SuperAnnuation(float rate, const std::string &provider);
+
+  float calculateAdjustment(
+      float income);  // Calculate superannuation adjustment
+  float calculateCompanyContribution(
+      float income);  // Company’s contribution based on income
+  std::string getProvider() const;
 };
 
 #endif

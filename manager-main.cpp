@@ -93,7 +93,7 @@ int main() {
       case 8:
         cout << "Your account balance:$" << payroll.getCompanyFund() << endl;
         break;
-       case 9: // Create Payslip
+      case 9:  // Create Payslip
         Utilities::CreatePayslip(&payroll);
       default:
         cout << "Invalid number";
