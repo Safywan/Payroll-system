@@ -42,7 +42,7 @@ void Utilities::addNewEmployee(Payroll *payroll_ptr) {
   cin.ignore();
   getline(cin, position);
   cout << "Enter the Pay Rate (per hour): ";
-  pay_rate = Utilities::getNonNegativeNumber<int>();
+  pay_rate = Utilities::getNonNegativeNumber<double>();
 
   cout << "Enter if the Employee works Full Time(0), PartTime(1), Casual(2) or "
           "Contact(3): ";
