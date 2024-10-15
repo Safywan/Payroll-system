@@ -19,20 +19,8 @@ int main()
     Utilities::loadData(&payroll);
 
     // Login as Employee
-    Employee *employee_ptr = nullptr;
     cout << "Logging in:" << endl;
-
-    while (employee_ptr == nullptr)
-    {
-        cout << "Enter your ID: ";
-        int id;
-        cin >> id;
-        employee_ptr = payroll.getEmployee(id);
-        if (employee_ptr == nullptr)
-        {
-            cout << "Invalid ID. Try again" << endl;
-        }
-    }
+    Employee *employee_ptr = Utilities::getEmployeeFromId(payroll);
     cout << "Logged in Successfully as: " << employee_ptr->getName() << endl;
 
     int response;

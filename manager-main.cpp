@@ -42,34 +42,35 @@ int main() {
     // Print options and ask user for response
     cout << "What do you want to do? (Select the number of the option you want)"
          << endl;
-    cout << "1. Save and Exit" << endl;
-    cout << "2. Add a new Employee" << endl;
-    cout << "3. Remove an Employee" << endl;
-    cout << "4. Output total company cost" << endl;
-    cout << "5. Process Payroll and pay outstanding balance" << endl;
-    cout << "6. Generate Payslips for all Employees" << endl;
-    cout << "7. View Details of all Employees" << endl;
-    cout << "8. Add fund to the company account" << endl;
-    cout << "9. Check your fund" << endl;
+    cout << "0. Save and Exit" << endl;
+    cout << "1. Add a new Employee" << endl;
+    cout << "2. Remove an Employee" << endl;
+    cout << "3. Output total company cost" << endl;
+    cout << "4. Process Payroll and pay outstanding balance" << endl;
+    cout << "5. Generate Payslips for all Employees" << endl;
+    cout << "6. View Details of all Employees" << endl;
+    cout << "7. Add fund to the company account" << endl;
+    cout << "8. Check your fund" << endl;
+    cout << "9. Create a Payslip for an employee" << endl;
     cout << "Enter your response: ";
 
     cin >> response;
     cout << endl;
     switch (response) {
-      case 1:  // Exit
+      case 0:  // Exit
         Utilities::saveData(payroll);
         cout << "Exiting program..." << endl;
         break;
-      case 2:  // Add a New Employee
+      case 1:  // Add a New Employee
         Utilities::addNewEmployee(&payroll);
         break;
-      case 3:  // Remove an Employee
+      case 2:  // Remove an Employee
         Utilities::removeEmployee(&payroll);
         break;
-      case 4:  // Output total company cost
+      case 3:  // Output total company cost
         cout << "The total cost is: " << payroll.getTotalCost() << endl;
         break;
-      case 5:  // Process Payroll
+      case 4:  // Process Payroll
         if (payroll.processPayRoll()) {
           cout << "The fund is processed! Thank you!" << endl;
         } else {
@@ -79,25 +80,26 @@ int main() {
         }
         cout << "Your fund is currently: " << payroll.getCompanyFund() << endl;
         break;
-      case 6:  // Generate payslips
+      case 5:  // Generate payslips
         cout << "Generating Payslips for all Employees." << endl;
         payroll.generatePaySlips();
         break;
-      case 7:  // View number of employees
+      case 6:  // View number of employees
         Utilities::viewEmployeeDetails(payroll);
         break;
-      case 8:  // Add fund to the company account
+      case 7:  // Add fund to the company account
         Utilities::addCompanyFund(&payroll);
         break;
-      case 9:
+      case 8:
         cout << "Your account balance:$" << payroll.getCompanyFund() << endl;
         break;
-
+       case 9: // Create Payslip
+        Utilities::CreatePayslip(&payroll);
       default:
         cout << "Invalid number";
     }
     cout << "\n\n";
-  } while (response != 1);
+  } while (response != 0);
 
   return 0;
 }
