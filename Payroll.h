@@ -8,9 +8,9 @@
 
 class Payroll {
  private:
-  double taxRate;           // Tax rate
-  double totalPayRollCost;  // Cost of total wages
-  long double companyFund;  // Salaries are paid from the company fund
+  float taxRate;           // Tax rate
+  float totalPayRollCost;  // Cost of total wages
+  float companyFund;  // Salaries are paid from the company fund
   // Array of payslips
   vector<PaySlip> payslips;
   // Number of employees in the company
@@ -30,7 +30,7 @@ class Payroll {
   // Remove employee to the payroll system
 
   void addPaySlip(PaySlip payslip);
-  std::string *getEmployeeDetails();
+  std::string *getEmployeesDetails();
 
   Employee *getEmployee(int employeeID);
 

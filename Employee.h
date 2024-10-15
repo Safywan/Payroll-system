@@ -30,7 +30,7 @@ class Employee : public User {
   std::string getPosition() const;
 
   // Method to calculate total payment based on work type and pay rate
-  float calculateTotalPayment() const;
+  float calculateGrossPay() const;
 
   // Method to set hours worked
   void setHoursWorked(int hours);

@@ -54,9 +54,6 @@ void Utilities::addNewEmployee(Payroll *payroll_ptr) {
 
   work_type = static_cast<WorkType>(work_type_int);
 
-  // Add new employee to payroll
-  // cout << name << " " << employeeID << ' ' << age << " " << position << " "
-  // << work_type_int << " "<< work_type << " " << pay_rate << endl;
   Employee newEmployee =
       Employee(name, employeeID, age, true, position, work_type, pay_rate, 0);
   payroll_ptr->addEmployee(newEmployee);
@@ -68,7 +65,7 @@ void Utilities::viewEmployeeDetails(Payroll payroll) {
        << number_employees << endl;
 
   if (number_employees > 0) {
-    std::string *details = payroll.getEmployeeDetails();
+    std::string *details = payroll.getEmployeesDetails();
 
     cout << "\nid | name | position | age" << endl;
     cout << "----------------------------" << endl;
@@ -190,7 +187,7 @@ void Utilities::CreatePayslip(Payroll *payroll_ptr) {
 
   // Initialise the payslip
   PaySlip payslip = PaySlip(employee_ptr->getEmployeeID(),
-                            employee_ptr->calculateTotalPayment());
+                            employee_ptr->calculateGrossPay());
 
   int response;
   do {
@@ -198,7 +195,7 @@ void Utilities::CreatePayslip(Payroll *payroll_ptr) {
     cout << employee_ptr->getName() << " has worked for "
          << employee_ptr->getHoursWorked() << " hours at an hourly rate of "
          << employee_ptr->getPayRate() << endl;
-    cout << "They will be paid: $" << employee_ptr->calculateTotalPayment()
+    cout << "They will be paid: $" << employee_ptr->calculateGrossPay()
          << endl
          << endl;
 
@@ -272,6 +269,7 @@ void Utilities::initialisePayroll(Payroll *payroll_ptr) {
   cout << "Creating new Payroll..." << endl;
   cout << "How much is in the company account: $";
   initCompanyAmount = Utilities::getNonNegativeNumber<double>();
+  
   // Initialise Payroll
   *payroll_ptr = Payroll(initCompanyAmount);
 }

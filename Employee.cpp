@@ -26,7 +26,7 @@ std::string Employee::getPosition() const { return position; }
 void Employee::setHoursWorked(int hours) { this->hoursWorked = hours; }
 
 // Method to calculate total payment
-float Employee::calculateTotalPayment() const {
+float Employee::calculateGrossPay() const {
   if (workType == FullTime) {
     // Full-time employees have a fixed salary (payRate represents salary)
     return payRate;
