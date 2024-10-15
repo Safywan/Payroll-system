@@ -169,7 +169,7 @@ void Utilities::initialisePayroll(Payroll *payroll_ptr)
     // Ask how much is in the company account
     double initCompanyAmount;
     cout << "Creating new Payroll..." << endl;
-    cout << "How much is in the company account: " << endl;
+    cout << "How much is in the company account:$ ";
     cin >> initCompanyAmount;
 
     // Initialise Payroll
