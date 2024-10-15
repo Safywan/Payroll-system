@@ -8,22 +8,22 @@ enum WorkType { FullTime, PartTime, Casual, Contract };
 class Employee : public User {
  private:
   std::string position;
-  WorkType workType;
-  float payRate;    // Hourly or salary rate depending on the work type
-  int hoursWorked;  // Track the number of hours worked
+  WorkType work_type;
+  float pay_rate;    // Hourly or salary rate depending on the work type
+  int hours_worked;  // Track the number of hours worked
 
  public:
-  Employee(const std::string &name, int employeeID, int age, bool isActive,
-           std::string position, WorkType workType, float payRate,
-           int hoursWorked = 0);
+  Employee(const std::string &name, int employee_id, int age, bool is_active,
+           std::string position, WorkType work_type, float pay_rate,
+           int hours_worked = 0);
 
-  // Getter for payRate
+  // Getter for pay_rate
   float getPayRate() const;
 
-  // Getter for workType
+  // Getter for work_type
   WorkType getWorkType() const;
 
-  // Getter for hoursWorked
+  // Getter for hours_worked
   int getHoursWorked() const;
 
   // Getter for position

@@ -11,12 +11,12 @@ using namespace std;
 class PaySlip {
  private:
   vector<Adjustment *> adjustment_ptrs;
-  int employeeID;
-  float grossPay, netPay;
+  int employee_id;
+  float gross_pay, net_pay;
 
  public:
   PaySlip();
-  PaySlip(int employeeID, int grossPay);
+  PaySlip(int employee_id, int gross_pay);
 
   void addAdjustment(Adjustment *adjustment);
   void removeLastAdjustment();
@@ -24,8 +24,8 @@ class PaySlip {
   float getGrossPay();
   float getNetPay();
 
-  void setGrossPay(float grossPay);
-  void setNetPay(float grossPay);
+  void setGrossPay(float gross_pay);
+  void setNetPay(float gross_pay);
 
   void generateSlip();
 };

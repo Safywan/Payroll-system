@@ -8,9 +8,8 @@
 
 class Payroll {
  private:
-  float taxRate;           // Tax rate
-  float totalPayRollCost;  // Cost of total wages
-  float companyFund;  // Salaries are paid from the company fund
+  float total_Payroll_Cost;  // Cost of total wages
+  float company_fund;  // Salaries are paid from the company fund
   // Array of payslips
   vector<PaySlip> payslips;
   // Number of employees in the company
@@ -19,26 +18,25 @@ class Payroll {
  public:
   // Constructor
   Payroll();
-  Payroll(long double companyFund);
+  Payroll(long double company_fund);
   // Process payroll
   bool processPayRoll();      // Process the payroll for all employees
   void calculateTotalCost();  // Calculates the total cost (including tax and
                               // superannuation)
   void addEmployee(Employee employee);  // Add employee to the payroll system
-  bool removeEmployee(int employeeID);  // Remove employee to the payroll system
+  bool removeEmployee(int employee_id);  // Remove employee to the payroll system
   void generatePaySlips();              // Generates payslips for employees
   // Remove employee to the payroll system
 
   void addPaySlip(PaySlip payslip);
   std::string *getEmployeesDetails();
 
-  Employee *getEmployee(int employeeID);
+  Employee *getEmployee(int employee_id);
 
   // If fund is low, manager can add fund
-  void setCompanyFund(double addFund);
+  void setCompanyFund(double add_fund);
 
   // Getter functions for data members
-  double getTaxRate();
   double getTotalCost();
   long double getCompanyFund();
   int getNumberOfEmployees();

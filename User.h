@@ -7,12 +7,12 @@
 class User {
  protected:
   std::string name;
-  int employeeID;
+  int employee_id;
   int age;
-  bool isActive;
+  bool is_active;
 
  public:
-  User(const std::string &name, int employeeID, int age, bool isActive);
+  User(const std::string &name, int employee_id, int age, bool is_active);
 
   std::string getName() const;
   int getEmployeeID() const;

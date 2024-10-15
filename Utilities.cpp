@@ -10,11 +10,11 @@ void Utilities::removeEmployee(Payroll *payroll_ptr) {
   if (payroll_ptr->getNumberOfEmployees() == 0) {
     cout << "You currently have no employees in your payroll system." << endl;
   } else {
-    // Remove Employee from payroll by prompting user for employeeID
-    int id;
+    // Remove Employee from payroll by prompting user for employee_id
+    int employee_id;
     cout << "Enter the ID of the Employee you are trying to remove: ";
-    id = Utilities::getNonNegativeNumber<int>();
-    if (payroll_ptr->removeEmployee(id)) {
+    employee_id = Utilities::getNonNegativeNumber<int>();
+    if (payroll_ptr->removeEmployee(employee_id)) {
       cout << "Employee removed successfully" << endl;
     } else {
       cout << "Invalid Employee ID. Try again" << endl;
@@ -26,7 +26,7 @@ void Utilities::addNewEmployee(Payroll *payroll_ptr) {
   // Create new Employee by prompting user for the details and add it to the
   // payroll
   std::string name, position;
-  int employeeID, age, work_type_int;
+  int employee_id, age, work_type_int;
   WorkType work_type;
   double pay_rate;
 
@@ -35,7 +35,7 @@ void Utilities::addNewEmployee(Payroll *payroll_ptr) {
   cin.ignore();
   getline(cin,name);
   cout << "Enter the EmployeeID: ";
-  employeeID = Utilities::getNonNegativeNumber<int>();
+  employee_id = Utilities::getNonNegativeNumber<int>();
   cout << "Enter the Employee's age: ";
   age = Utilities::getNonNegativeNumber<int>();
   cout << "Enter the Employee's position: ";
@@ -55,7 +55,7 @@ void Utilities::addNewEmployee(Payroll *payroll_ptr) {
   work_type = static_cast<WorkType>(work_type_int);
 
   Employee newEmployee =
-      Employee(name, employeeID, age, true, position, work_type, pay_rate, 0);
+      Employee(name, employee_id, age, true, position, work_type, pay_rate, 0);
   payroll_ptr->addEmployee(newEmployee);
 }
 
@@ -80,7 +80,7 @@ void Utilities::viewEmployeeDetails(Payroll payroll) {
 void Utilities::saveData(Payroll payroll) {
   /* Saves The data in the following format: The first line will be the company
   account, followed by the number of employees. Then, it will be ID, Name,
-  Position, Age, isActive, work_type, pay_rate,  and hours_worked all in
+  Position, Age, is_active, work_type, pay_rate,  and hours_worked all in
   separate lines*/
 
   ofstream employee_file;
@@ -129,14 +129,14 @@ void Utilities::loadData(Payroll *payroll_ptr) {
     int num_employees;
     employee_file >> num_employees;
 
-    int id, age, hours_worked, buffer;
+    int employee_id, age, hours_worked, buffer;
     float pay_rate;
     string name, position;
     bool is_active;
     WorkType work_type;
     // Create each employee
     for (int i = 0; i < num_employees; i++) {
-      employee_file >> id;
+      employee_file >> employee_id;
       employee_file >> name;
       employee_file >> position;
       employee_file >> age;
@@ -149,7 +149,7 @@ void Utilities::loadData(Payroll *payroll_ptr) {
       work_type = static_cast<WorkType>(buffer);
 
       // Create the Employee
-      payroll_ptr->addEmployee(Employee(name, id, age, is_active, position,
+      payroll_ptr->addEmployee(Employee(name, employee_id, age, is_active, position,
                                         work_type, pay_rate, hours_worked));
     }
     employee_file.close();
@@ -167,9 +167,9 @@ Employee *Utilities::getEmployeeFromId(Payroll payroll) {
 
   while (employee_ptr == nullptr) {
     cout << "Enter the ID: ";
-    int id;
-    id = Utilities::getNonNegativeNumber<int>();
-    employee_ptr = payroll.getEmployee(id);
+    int employee_id;
+    employee_id = Utilities::getNonNegativeNumber<int>();
+    employee_ptr = payroll.getEmployee(employee_id);
     if (employee_ptr == nullptr) {
       cout << "Invalid ID. Try again" << endl;
     }
@@ -265,26 +265,26 @@ void Utilities::CreatePayslip(Payroll *payroll_ptr) {
 }
 void Utilities::initialisePayroll(Payroll *payroll_ptr) {
   // Ask how much is in the company account
-  double initCompanyAmount;
+  double init_company_amount;
   cout << "Creating new Payroll..." << endl;
   cout << "How much is in the company account: $";
-  initCompanyAmount = Utilities::getNonNegativeNumber<double>();
-  
+  init_company_amount = Utilities::getNonNegativeNumber<double>();
+
   // Initialise Payroll
-  *payroll_ptr = Payroll(initCompanyAmount);
+  *payroll_ptr = Payroll(init_company_amount);
 }
 
 // Add more fund if needed by manager
 void Utilities::addCompanyFund(Payroll *payroll_ptr) {
-  double addFund;
+  double add_fund;
   cout << "Add money to your account:$ ";
-  addFund = Utilities::getNonNegativeNumber<double>();
+  add_fund = Utilities::getNonNegativeNumber<double>();
 
   // Update the account
-  payroll_ptr->setCompanyFund(addFund);
+  payroll_ptr->setCompanyFund(add_fund);
 
   // Show how much was added
-  cout << "$" << std::fixed << addFund << " was added to your account!" << endl;
+  cout << "$" << std::fixed << add_fund << " was added to your account!" << endl;
   cout << "Your current balance is: " << "$" << payroll_ptr->getCompanyFund()
        << endl;
 }

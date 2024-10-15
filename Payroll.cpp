@@ -5,49 +5,49 @@
 using namespace std;
 
 Payroll::Payroll() {
-  this->companyFund = 0;
-  this->totalPayRollCost = 0;
+  this->company_fund = 0;
+  this->total_Payroll_Cost = 0;
 }
 
 // Constructor that initialises company fund
-Payroll::Payroll(long double companyFund) {
-  this->companyFund = companyFund;
-  this->totalPayRollCost = 0;
+Payroll::Payroll(long double company_fund) {
+  this->company_fund = company_fund;
+  this->total_Payroll_Cost = 0;
 }
 
 // Pays the outstanding PayRollCost and returns true if funds are sufficient.
 // Returns false if not
 bool Payroll::processPayRoll() {
-  if (companyFund < totalPayRollCost) {
+  if (company_fund < total_Payroll_Cost) {
     return false;
   } else
-    companyFund -= totalPayRollCost;
-  totalPayRollCost = 0;
+    company_fund -= total_Payroll_Cost;
+  total_Payroll_Cost = 0;
   return true;
 }
 
 // Calculates the total money needed from the company fund
 void Payroll::calculateTotalCost() {
   // Reset the cost to 0
-  totalPayRollCost = 0;
+  total_Payroll_Cost = 0;
 
   // Go through the employees and calculate their total cost using an iterator
   // to iterate over the vector
   for (auto it = employees.begin(); it != employees.end(); ++it) {
-    totalPayRollCost += it->calculateGrossPay();
+    total_Payroll_Cost += it->calculateGrossPay();
   }
 }
 
 // Add an Employee object to the vector
 void Payroll::addEmployee(Employee employee) { employees.push_back(employee); }
 
-/* Takes an employeeID and removes the relevant employee from the payroll and
+/* Takes an employee_id and removes the relevant employee from the payroll and
  returns true. Returns false if no such employee exists. */
-bool Payroll::removeEmployee(int employeeID) {
+bool Payroll::removeEmployee(int employee_id) {
   // Search through the array to find the index using an iterator to iterate
   // over the vector
   for (auto it = employees.begin(); it != employees.end();) {
-    if (employeeID == it->getEmployeeID()) {
+    if (employee_id == it->getEmployeeID()) {
       employees.erase(it);
       return true;
     } else {
@@ -73,9 +73,9 @@ std::string *Payroll::getEmployeesDetails() {
   return details;
 }
 
-Employee *Payroll::getEmployee(int employeeID) {
+Employee *Payroll::getEmployee(int employee_id) {
   for (int i = 0; i < (int)employees.size(); i++) {
-    if (employeeID == employees[i].getEmployeeID()) {
+    if (employee_id == employees[i].getEmployeeID()) {
       return &employees[i];
     }
   }
@@ -93,13 +93,12 @@ void Payroll::generatePaySlips() {
 }
 
 // Allow managers to add money. This will be done through utility class
-void Payroll::setCompanyFund(double addFund) {
-  this->companyFund = companyFund + addFund;
+void Payroll::setCompanyFund(double add_fund) {
+  this->company_fund = company_fund + add_fund;
 }
 
 // Getter functions defined
 int Payroll::getNumberOfEmployees() { return employees.size(); }
-double Payroll::getTaxRate() { return taxRate; }
-long double Payroll::getCompanyFund() { return companyFund; }
-double Payroll::getTotalCost() { return totalPayRollCost; }
+long double Payroll::getCompanyFund() { return company_fund; }
+double Payroll::getTotalCost() { return total_Payroll_Cost; }
 vector<Employee> Payroll::getEmployees() { return employees; }

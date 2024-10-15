@@ -19,4 +19,4 @@ As the program was to be interfaced using two different executables, several fun
 ## [Employee Class](Employee.h)
 
 - Removed functions `calculateNetPay()` and `getPayDetails()` as this could be easily taken from the [`PaySlip` class](PaySlip.h).
-- Added attribute `int hoursWorked` to store the hours work and help calculate gross pay.
+- Added attribute `int hours_worked` to store the hours work and help calculate gross pay.
