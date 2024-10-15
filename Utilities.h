@@ -22,7 +22,10 @@ class Utilities {
 
   static void initialisePayroll(Payroll *payroll_ptr);
 
+  static Employee* getEmployeeFromId(Payroll payroll);
+  static void CreatePayslip(Payroll *payroll_ptr);
   static void addCompanyFund(Payroll *payroll_ptr);
+
 };
 
 #endif
