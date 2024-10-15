@@ -45,8 +45,8 @@ void PaySlip::generateSlip() {
   outfile.open(filename);
   if (outfile.is_open()) {
     outfile << "Employee ID: " << employeeID << endl;
-    outfile << "Gross Pay: " << grossPay << endl;
-    outfile << "Net Pay: " << netPay << endl;
+    outfile << "Gross Pay: $" << grossPay << endl;
+    outfile << "Net Pay: $" << netPay << endl;
     outfile.close();
   } else {
     cerr << "Error opening file" << endl;
