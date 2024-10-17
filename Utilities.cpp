@@ -165,14 +165,14 @@ void Utilities::loadData(Payroll *payroll_ptr) {
   }
 }
 
-Employee *Utilities::getEmployeeFromId(Payroll payroll) {
+Employee *Utilities::getEmployeeFromId(Payroll *payroll) {
   Employee *employee_ptr = nullptr;
 
   while (employee_ptr == nullptr) {
     cout << "Enter the ID: ";
     int employee_id;
     employee_id = Utilities::getNonNegativeNumber<int>();
-    employee_ptr = payroll.getEmployee(employee_id);
+    employee_ptr = payroll->getEmployee(employee_id);
     if (employee_ptr == nullptr) {
       cout << "Invalid ID. Try again" << endl;
     }
@@ -184,7 +184,7 @@ void Utilities::CreatePayslip(Payroll *payroll_ptr) {
   cout << "Retrieving the data of the relevant Employee.." << endl;
 
   // Use the below function to validate the ID and get the employee
-  Employee *employee_ptr = Utilities::getEmployeeFromId(*payroll_ptr);
+  Employee *employee_ptr = Utilities::getEmployeeFromId(payroll_ptr);
 
   cout << "Creating Payslip for: " << employee_ptr->getName();
 

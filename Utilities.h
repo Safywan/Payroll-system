@@ -28,7 +28,7 @@ class Utilities {
   static void initialisePayroll(Payroll *payroll_ptr);
 
   //Input an ID and return an employee ptr
-  static Employee *getEmployeeFromId(Payroll payroll);
+  static Employee *getEmployeeFromId(Payroll *payroll);
   
   // Create payslip and add it to the vector
   static void CreatePayslip(Payroll *payroll_ptr);
