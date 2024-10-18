@@ -23,6 +23,10 @@ bool Payroll::processPayRoll() {
   } else
     company_fund -= total_Payroll_Cost;
   total_Payroll_Cost = 0;
+  for (int i = 0; i < employees.size(); i++) {
+    // Set hours to 0 again to reset
+    employees[i].setHoursWorked(0);
+  }
   return true;
 }
 

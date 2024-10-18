@@ -76,12 +76,18 @@ int main() {
         Utilities::removeEmployee(&payroll);
         break;
       case 3:  // Output total company cost
-        if (payroll.getNumberOfEmployees() > 0) {
+        payroll.calculateTotalCost();
+        if (payroll.getNumberOfEmployees() > 0 && payroll.getTotalCost() == 0) {
+          cout << "The total cost is: " << "$" << std::fixed
+               << payroll.getTotalCost() << endl;
+          cout << "You need to create payslips to pay employees." << endl;
+
+        } else if (payroll.getNumberOfEmployees() > 0) {
           payroll.calculateTotalCost();
-          cout << "The total cost is: " << std::fixed << payroll.getTotalCost()
-               << endl;
+          cout << "The total cost is: " << "$" << std::fixed
+               << payroll.getTotalCost() << endl;
         } else {
-          cout << "The cost is 0 as there is no employees in the system"
+          cout << "The cost is $0 as there is no employees in the system."
                << endl;
         }
         break;
