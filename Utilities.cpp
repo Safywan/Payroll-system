@@ -256,6 +256,7 @@ void Utilities::CreatePayslip(Payroll *payroll_ptr) {
       }
       case 6: {
         cout << "Saving Payslip" << endl;
+        payslip.setGrossPay(employee_ptr->calculateGrossPay());
         payroll_ptr->addPaySlip(payslip);
         break;
       }
