@@ -20,7 +20,7 @@ int main() {
 
   // Login as Employee
   cout << "Logging in:" << endl;
-  Employee *employee_ptr = Utilities::getEmployeeFromId(payroll);
+  Employee *employee_ptr = Utilities::getEmployeeFromId(&payroll);
   cout << "Logged in Successfully as: " << employee_ptr->getName() << endl;
 
   int response;

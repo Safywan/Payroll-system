@@ -48,7 +48,7 @@ void PaySlip::generateSlip() {
   if (outfile.is_open()) {
     outfile << "Employee ID: " << employee_id << endl;
     outfile << std::fixed << "Gross Pay: $" << gross_pay << endl;
-    outfile << std::fixed << "Net Pay: $" << net_pay << endl;
+    outfile << std::fixed << "Net Pay: $" << getNetPay() << endl;
     outfile.close();
   } else {
     cerr << "Error opening file" << endl;

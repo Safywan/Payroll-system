@@ -18,6 +18,7 @@ Payroll::Payroll(long double company_fund) {
 // Pays the outstanding PayRollCost and returns true if funds are sufficient.
 // Returns false if not
 bool Payroll::processPayRoll() {
+  calculateTotalCost();
   if (company_fund < total_Payroll_Cost) {
     return false;
   } else
